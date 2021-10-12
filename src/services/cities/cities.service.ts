@@ -10,6 +10,6 @@ export class CitiesService {
   constructor(private http: HttpClient) { }
 
   add(data: any) {
-    return this.http.post(`${environment.endpoint}/offers/add.json`, data).toPromise();
+    return this.http.post(`${environment.endpoint}/Cities/add`, data).toPromise();
   }
 }

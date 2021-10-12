@@ -1,18 +1,26 @@
 <div class="row">
     <div class="col-md-12">
-        <form nz-form autocomplete="off" [formGroup]="form">
             <div class="row">
-                 
 
+<input      [(ngModel)]="this.CitiesObject.name"/>
+
+<input      [(ngModel)]="this.CitiesObject.name_en"
+/>
+                 <div    *ngFor="let allData of townsArray; let i = index" >
+
+<input      [(ngModel)]="townsArray[i].name"/>
+
+<input      [(ngModel)]="townsArray[i].name_en"
+/>
+</div>
+<div (click)="addtowns()">اضافة منطقة</div>
                 <div class="col-md-12">
                     <div class="form-group mb-3">
                         <button 
                             class="btn btn-block btn-lg btn-info" 
-                            matRipple
-                            [disabled]="!form.valid"
-                            *ngIf="!isUpdate"
+                            
                             (click)="add()">
-                            <i nz-icon nzType="loading" nzTheme="outline" *ngIf="isAdd"></i>
+                            <i nz-icon nzType="loading" nzTheme="outline" ></i>
                             اضافة
                         </button>                           
                         <button 
@@ -27,6 +35,5 @@
                     </div>                
                 </div>
             </div>
-        </form>
     </div>
 </div>
