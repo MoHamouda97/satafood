@@ -18,7 +18,7 @@ export class AddEditComponent implements OnInit {
   cityname:string
   cityname_en:string
 image:File;
-
+loading = false
 
   obj: any = {};
    townObject = new TownsCreate();
@@ -37,33 +37,14 @@ image:File;
   ngOnInit() {
 
     this.townsArray.push(this.townObject)
+console.log(this.CitiesObject.name)
 
-    // this.pizza.name = "hossam"
-    // console.log(this.pizza)
-    // this.form = this.fb.group({
-    //   name: ['', Validators.required],
-    //   towns: this.fb.array([]),
-    // });
-    this.addTown();
-    //this.addArea();
-    console.log(this.form.value)     
-    console.log(this.form.get('towns').get('areas'))     
   }
 
-  //#region // create towns array
-  public get getTowns() : FormArray {
-    return this.form.get('towns') as FormArray;
-  }
-
-  addTown() {
-    //const id = this.itemID;
-   
-  }
+ 
 
   removeTown(i: number) {
-    if (this.getTowns.length > 1) {
-      this.getTowns.removeAt(i);
-    }
+  
   }
   //#endregion
 
@@ -72,18 +53,9 @@ image:File;
     return this.form.get('towns').get('areas') as FormArray;
   }
 
-  addArea() {
-    //const id = this.itemID;
-    this.getAreas.push(this.fb.group({
-      name: ['', Validators.required],
-    }))
-  }
 
-  removeArea(i: number) {
-    if (this.getTowns.length > 1) {
-      this.getAreas.removeAt(i);
-    }
-  }
+
+
   //#endregion
   Chooseimage($event) {
 console.log($event.target.files[0])
@@ -91,16 +63,21 @@ this.image =  $event.target.files[0]
   }
   addtowns(){
     this.townsArray.push(new TownsCreate())
-console.log(this.townsArray)
   }
 
   //#region // add new city
   async add() {
+    const inputFeilds = document.querySelectorAll("input");
 
+const validInputs = Array.from(inputFeilds).filter( input => input.value === "");
+console.log(validInputs)
+if (validInputs.length == 0){
+    var newArray = this.townsArray.filter(value => JSON.stringify(value) !== '{}');
+    this.loading = true
     var create = new Towns()
-    create.create = this.townsArray
+    create.create = newArray
     this.CitiesObject.towns = create
-console.log(this.CitiesObject)
+
 var formData: any = new FormData();
 formData.append("data", JSON.stringify(this.CitiesObject));
 formData.append("img", this.image);
@@ -108,8 +85,12 @@ formData.append("img", this.image);
     const data = await this.service.add(formData);
     this.isAdd = false;
     this.generic.showNotification('success', lang.ar.addNewTitle, lang.ar.addNewMsg)
-    this.form.reset();
   }  
+else {
+  this.generic.showNotification('error', lang.ar.validateerror, lang.ar.validateerror)
+
+}
   //#endregion
 
+  }
 }
