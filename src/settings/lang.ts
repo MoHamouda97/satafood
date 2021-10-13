@@ -30,6 +30,8 @@ export const ar = {
     delteMsg: 'تمت عملية الحذف بنجاح',   
     addNewTitle: 'اضافة',
     addNewMsg: 'تمت الاضافة بنجاح',
+    validateerror: 'اكمل جميع البيانات الفارغة',
+
     updateTitle: 'تحديث',
     updateMsg: 'تمت التحديث بنجاح',         
 }

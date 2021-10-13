@@ -1,44 +1,75 @@
-<div class="row">
+<div class="row bigrow">
     <div class="col-md-12">
             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            placeholder="اسم المدينة ..."
+                            [(ngModel)]="this.CitiesObject.name" 
+                            required
+                            >              
+                    </div>
+                </div>  
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            placeholder="اسم  المدينة ... انجليزي"
+                            required
+                            [(ngModel)]="this.CitiesObject.name_en" 
+                           >              
+                    </div>
+                </div>  
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input 
+                            type="file" 
+                            class="form-control"
+                            placeholder="صورة للمدينة"
+                            (change)="Chooseimage($event)"                    
+                                    >              
+                    </div>
+                </div>  
 
-<input      [(ngModel)]="this.CitiesObject.name"/>
 
-<input      [(ngModel)]="this.CitiesObject.name_en"
-/>
-<input      (change)="Chooseimage($event)" type="file"
-/>
 </div>
-<div class="row">
-                 <div    *ngFor="let allData of townsArray; let i = index" >
+<div class="row townsclass">
+    <div (click)="addtowns()" class="col-md-6 addtowns">اضف المناطق داخل المدينة</div>
+    </div>
+    <div class="row townsinputs">
+    <div  *ngFor="let allData of townsArray; let i = index"  class="col-md-6">
 
-<input      [(ngModel)]="townsArray[i].name"/>
-
-<input      [(ngModel)]="townsArray[i].name_en"
-/>
-</div>
-
-<div (click)="addtowns()">اضافة منطقة</div>
+        
+            <input 
+            class="form-control"
+            placeholder=" اسم المنطقة"
+            [(ngModel)]="townsArray[i].name"
+            required
+                    >    
+            
+                    <input 
+                    class="form-control"
+                    [(ngModel)]="townsArray[i].name_en"
+                    placeholder="اسم المنطقة انجليزي"
+                    required
+                         >    
+                  
+                        </div>
+            </div>
                 <div class="col-md-12">
                     <div class="form-group mb-3">
                         <button 
                             class="btn btn-block btn-lg btn-info" 
-                            
+                            [disabled]="this.CitiesObject.name === undefined"
                             (click)="add()">
-                            <i nz-icon nzType="loading" nzTheme="outline" ></i>
+                            <i nz-icon nzType="loading"   *ngIf="loading" nzTheme="outline" ></i>
                             اضافة
                         </button>                           
-                        <button 
-                            class="btn btn-block btn-lg btn-success" 
-                            matRipple
-                            [disabled]="!form.valid"
-                            *ngIf="isUpdate"
-                            (click)="update()">
-                            <i nz-icon nzType="loading" nzTheme="outline" *ngIf="isAdd"></i>
-                            تحديث
-                        </button>                           
+                                            
                     </div>                
                 </div>
             </div>
     </div>
-</div>

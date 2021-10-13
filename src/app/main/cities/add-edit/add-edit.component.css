@@ -1,0 +1,20 @@
+.addtowns
+{
+background-image: url('./../../../../assets/images/add.png');
+background-repeat: no-repeat;
+background-size: 50px;
+height: 50px;
+font-size: 20px;
+margin: 10px;
+padding-left: 30px;  /* width of the image plus a little extra padding */
+display: block;  /* may not need this, but I've found I do */
+}
+
+.townsclass {
+
+    margin: 10px;
+    
+}
+.townsinputs  .form-control {
+    margin: 10px;
+}
