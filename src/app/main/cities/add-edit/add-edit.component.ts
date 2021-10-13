@@ -17,7 +17,7 @@ export class AddEditComponent implements OnInit {
   isUpdate: boolean = false;
   cityname:string
   cityname_en:string
-
+image:File;
 
 
   obj: any = {};
@@ -85,7 +85,10 @@ export class AddEditComponent implements OnInit {
     }
   }
   //#endregion
-
+  Chooseimage($event) {
+console.log($event.target.files[0])
+this.image =  $event.target.files[0]
+  }
   addtowns(){
     this.townsArray.push(new TownsCreate())
 console.log(this.townsArray)
@@ -93,16 +96,16 @@ console.log(this.townsArray)
 
   //#region // add new city
   async add() {
-    this.CitiesObject.name = this.cityname
-    this.CitiesObject.name_en = this.cityname_en
-    this.CitiesObject.photo = this.cityname_en
 
     var create = new Towns()
     create.create = this.townsArray
     this.CitiesObject.towns = create
-console.log(JSON.stringify(this.CitiesObject))
+console.log(this.CitiesObject)
+var formData: any = new FormData();
+formData.append("data", JSON.stringify(this.CitiesObject));
+formData.append("img", this.image);
     this.isAdd = true;
-    const data = await this.service.add({"data":this.CitiesObject});
+    const data = await this.service.add(formData);
     this.isAdd = false;
     this.generic.showNotification('success', lang.ar.addNewTitle, lang.ar.addNewMsg)
     this.form.reset();

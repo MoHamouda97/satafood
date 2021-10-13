@@ -6,6 +6,10 @@
 
 <input      [(ngModel)]="this.CitiesObject.name_en"
 />
+<input      (change)="Chooseimage($event)" type="file"
+/>
+</div>
+<div class="row">
                  <div    *ngFor="let allData of townsArray; let i = index" >
 
 <input      [(ngModel)]="townsArray[i].name"/>
@@ -13,6 +17,7 @@
 <input      [(ngModel)]="townsArray[i].name_en"
 />
 </div>
+
 <div (click)="addtowns()">اضافة منطقة</div>
                 <div class="col-md-12">
                     <div class="form-group mb-3">
