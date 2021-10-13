@@ -15,6 +15,10 @@ export const Approutes: Routes = [
         loadChildren: () => import('./dashboards/dashboard.module').then(m => m.DashboardModule)
       },
       {
+        path: 'areas',
+        loadChildren: () => import('./main/areas/areas.module').then(m => m.AreasModule)
+      },
+      {
         path: 'cities',
         loadChildren: () => import('./main/cities/cities.module').then(m => m.CitiesModule)
       },      

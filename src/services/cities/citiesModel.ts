@@ -20,10 +20,14 @@ export class TownsCreate {
     areas:   Areas;
 }
 
-export interface Areas {
+export class Areas {
     create: AreasCreate[];
 }
 
-export interface AreasCreate {
+export class AreasCreate {
     name: string;
+    name_en: string;
+    town_id:number;
+    latitude:number;
+    longitude:number;
 }
