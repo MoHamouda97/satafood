@@ -35,6 +35,8 @@ import en from '@angular/common/locales/en';
 import { CustomHttpInterceptorInterceptor } from './custom-http-interceptor.interceptor';
 import { CitiesService } from 'src/services/cities/cities.service';
 import { GenericService } from 'src/services/generic/generic.service';
+import { AddComponent } from './main/branches/add/add.component';
+import { IndexComponent } from './main/branches/index/index.component';
 
 registerLocaleData(en);
 
@@ -53,7 +55,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BlankComponent,
     NavigationComponent,
     BreadcrumbComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddComponent,
+    IndexComponent,
   ],
   imports: [
     CommonModule,
