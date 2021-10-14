@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgZorroAntdModule } from "ng-zorro-antd";
 import { AntModule } from "./ant.module";
 import { MatModule } from "./mat.module";
 import { PipesModule } from "./pipes.module";
@@ -12,7 +13,8 @@ import { PipesModule } from "./pipes.module";
     imports: [
         CommonModule,  
         AntModule,
-        PipesModule,        
+        PipesModule,     
+        NgZorroAntdModule   
     ],
     exports: [
         ReactiveFormsModule,
