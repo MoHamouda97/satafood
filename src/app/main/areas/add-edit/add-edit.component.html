@@ -1,0 +1,99 @@
+<div class="row bigrow">
+    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                
+                    <nz-select 
+                    style="width: 100%;"
+                    [(ngModel)]="selectedArea"
+                    (ngModelChange)="addnewArea($event)"
+
+                    nzShowSearch 
+                    nzAllowClear 
+                    nzPlaceHolder="اختار اسم المنطقة"
+                    [nzSize]="'large'"
+                    >
+                    <nz-option 
+                        *ngFor="let p of Townlist" 
+                        [nzLabel]="p.name" 
+                        [nzValue]="p.id"></nz-option>
+                </nz-select>          
+                </div>  
+            
+
+
+</div>
+<div class="row townsclass">
+    <div (click)="addtowns()" class="col-md-6 addtowns">اضف المنقطة الفرعية  </div>
+    </div>
+    <div class="row townsinputs">
+    <div  *ngFor="let allData of ArrayAreas; let i = index"  class="col-md-6">
+
+        
+            <input 
+            class="form-control location" 
+            placeholder=" اسم المنطقة"
+            [(ngModel)]="ArrayAreas[i].name"
+            required
+                    >    
+            
+                    <input 
+                    class="form-control"
+                    [(ngModel)]="ArrayAreas[i].name_en"
+                    placeholder="اسم المنطقة انجليزي"
+                    required
+                         >    
+                    <img (click)="editLocation($event, i)" src="./../../../../assets/images/location.png">
+                        </div>
+            </div>
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <button 
+                            class="btn btn-block btn-lg btn-info" 
+                            (click)="add()">
+                            <i nz-icon nzType="loading"  *ngIf="loading" nzTheme="outline" ></i>
+                            اضافة
+                        </button>                           
+                                            
+                    </div>                
+                </div>
+            </div>
+    </div>
+    <nz-modal [(nzVisible)]="isLocationVisible" [nzTitle]="'تحديث العنوان'" (nzOnCancel)="handleCancel()">
+        <input 
+            type="text" 
+            style="width: 100%; margin-bottom: 15px; direction: rtl;" 
+            nz-input
+            nzSize="large"
+            id="address"
+            placeholder="كتابة العنوان الجديد"
+            (keyup)="changeAddress($event)">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <agm-map  [latitude]="lat" [longitude]="lng" [zoom]="zoom" #map3>
+                            <agm-marker  (dragEnd)="markerDragEnd($event)"
+                            [markerDraggable]="true" [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button
+                    class="form-control w-100"
+                    style="margin-top: 15px;" 
+                    nz-button 
+                    matRipple
+                    (click)="updateLocation()">
+                    <div class="loader text-center w-100" *ngIf="updateLoader">
+                    </div>                        
+                    <span *ngIf="!updateLoader">
+                        تحديث العنوان
+                    </span>    
+                </button>
+            </div>        
+        </div>
+    </nz-modal>
+    
+    <!-- end modal -->

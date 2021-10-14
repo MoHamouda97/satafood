@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { validations } from 'src/app/helper/validations';
 import { CitiesService } from 'src/services/cities/cities.service';
 import { Cities, CitiesData, Towns, TownsCreate  } from 'src/services/cities/citiesModel';
 import { GenericService } from 'src/services/generic/generic.service';
@@ -67,11 +68,7 @@ this.image =  $event.target.files[0]
 
   //#region // add new city
   async add() {
-    const inputFeilds = document.querySelectorAll("input");
-
-const validInputs = Array.from(inputFeilds).filter( input => input.value === "");
-console.log(validInputs)
-if (validInputs.length == 0){
+if (new validations(document).vlidate()){
     var newArray = this.townsArray.filter(value => JSON.stringify(value) !== '{}');
     this.loading = true
     var create = new Towns()
