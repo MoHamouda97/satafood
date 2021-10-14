@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CategoriesRoutingModule } from './categories-routing.module';
+import { RestaurantareaRoutingModule } from './restaurantarea-routing.module';
 import { EditComponent } from './add/edit/edit.component';
 import { IndexComponent } from './index/index.component';
 
@@ -10,7 +10,7 @@ import { IndexComponent } from './index/index.component';
   declarations: [EditComponent, IndexComponent],
   imports: [
     CommonModule,
-    CategoriesRoutingModule
+    RestaurantareaRoutingModule
   ]
 })
-export class CategoriesModule { }
+export class RestaurantareaModule { }

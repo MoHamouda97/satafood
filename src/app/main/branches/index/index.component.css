@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+
+h6 {
+    padding: 0 10px;
+    font-size: 21px;
+    color: black;
+}
+
+.left {
+    height: 35px;
+    padding-inline: 15px 5px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 15px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    text-align: start;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    cursor: pointer;
+    background-color: rgb(245, 245, 245);
+    
+}
