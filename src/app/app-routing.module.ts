@@ -14,6 +14,17 @@ export const Approutes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./dashboards/dashboard.module').then(m => m.DashboardModule)
       },
+      
+      {
+        path: 'cuisines',
+        loadChildren: () => import('./main/cuisines/cuisines.module').then(m => m.CuisinesModule)
+      }
+      ,
+      
+      {
+        path: 'mainmenu',
+        loadChildren: () => import('./main/min-menu/min-menu.module').then(m => m.MinMenuModule)
+      },
       {
         path: 'areas',
         loadChildren: () => import('./main/areas/areas.module').then(m => m.AreasModule)

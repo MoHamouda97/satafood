@@ -31,3 +31,23 @@ export class AreasCreate {
     latitude:number;
     longitude:number;
 }
+
+export class MenuCategories {
+    name:  string;
+    name_en:  string;
+    restaurant_id:  number;
+    id:  number;
+
+    towns: Towns;
+}
+export class MenuItems {
+    id:                 number;
+    name:               string;
+    photo:              string;
+    descriptions:       string;
+    descriptions_en:    string;
+    name_en:            string;
+    menu_categories_id: number;
+    price:              number;
+
+}

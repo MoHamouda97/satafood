@@ -1,1 +1,82 @@
-<p>index works!</p>
+<div class="row mainview">
+<div class="col-4 table-hover" >
+    <button nz-button nzType="default" (click)="loadTwo()" [nzLoading]="isLoadingTwo">
+        <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+              اضافة قسم
+      </button>
+<div class="topics"  [class.hovercolor]="mouseOvered" 
+(mouseover)="mouseOvered=true"
+(mouseout)="mouseOvered=false" 
+[class.active]="active == true" 
+ *ngFor="let menucats of MenuCat; let i = index"
+ (click)="chooseCategory(i)"
+
+ >
+     <div class="col-md-10 topicstext">
+          {{menucats.name}}</div>
+    <nz-avatar  nzIcon="edit" nzSize="small" style="vertical-align: left;"></nz-avatar>
+
+</div>
+
+
+</div>
+<div class="col-8" >
+    <button nz-button nzType="default" (click)="loadTwo()" [nzLoading]="isLoadingTwo">
+        <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+      اضافة طبق
+      </button>
+
+    <div class="my-orders"  *ngFor="let menuitem of MenuItem; let i = index"
+    >
+        <div class="order-box"  (click)="getOrder(i)">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                    <img 
+                        src="{{URL}}/{{menuitem.photo}}" 
+                        alt="order-img" 
+                        class="img-thumbnail img-fluid">
+                </div>
+                <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                    <ul class="order-details-list list-unstyled">
+                        <li class="order-name">
+                            <strong>
+                              {{menuitem.name}}
+                            </strong>
+                        </li>
+                        <li class="descitem">
+                            {{menuitem.descriptions}}
+
+                        </li>
+                        <li class="price">{{menuitem.price}} جنيه </li>
+                        <li>
+
+                            <!--<span *ngIf="order.confirm == 1">
+                                <button class="btn float-left" matRipple>
+                                    <i nz-icon nzType="reload" nzTheme="outline"></i>
+                                    اطلب مرة اخرى
+                                </button>
+                            </span>
+                            <span *ngIf="orders[i].typeorder == 2">
+                                <button class="btn float-left" (click)="editLocation($event, i)" matRipple>
+                                    <i nz-icon nzType="environment" nzTheme="outline"></i>
+                                    تحديث العنوان
+                                </button>
+                            </span>     -->                   
+                        </li>
+                    </ul>
+                    <nz-avatar  nzIcon="edit" nzSize="small" style="float: left;top: 29px;"></nz-avatar>
+                    <nz-avatar  nzIcon="delete" nzSize="small" style="float: left;top: 29px;    right: -6px;"></nz-avatar>
+
+                </div>
+
+            </div>
+        </div>   
+    </div>
+
+
+</div>
+
+
+</div>
+
+<app-add-category-modal [Show]="showaddcat" ></app-add-category-modal>

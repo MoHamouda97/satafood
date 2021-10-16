@@ -1,0 +1,34 @@
+<nz-modal [(nzVisible)]="Show" [nzTitle]="'اضافة قسم جديد للمنيو'" (nzOnCancel)="handleCancel()">
+    <input 
+        type="text" 
+        style="width: 100%; margin-bottom: 15px; direction: rtl;" 
+        nz-input
+        nzSize="large"
+        id="address"
+        [(ngModel)]="CateData.name"
+        placeholder="الاسم">
+
+        <input 
+        type="text" 
+        style="width: 100%; margin-bottom: 15px; direction: rtl;" 
+        nz-input
+        nzSize="large"
+        id="address"
+        [(ngModel)]="CateData.name_en"
+
+        placeholder="الاسم بالانجليزي"
+       >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group mb-3">
+                    <button 
+                        class="btn btn-block btn-lg btn-info" 
+                        (click)="save()">
+                        <i nz-icon nzType="loading"  *ngIf="loading" nzTheme="outline" ></i>
+                        اضافة
+                    </button>                           
+                                        
+                </div>                
+            </div>
+        </div>
+</nz-modal>

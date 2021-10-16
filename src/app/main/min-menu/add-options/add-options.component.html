@@ -1,0 +1,142 @@
+<div class="row mainview " >
+    <div class="col-12">
+
+        <button class="addnewtopic" nz-button nzType="default" (click)="addTopic()" [nzLoading]="isLoadingTwo">
+            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+          اضافة طبق
+          </button>
+    </div>
+   
+<div class="col-12 mainfram" *ngFor="let allData of topicsarray; let i = index">
+<div class="row justify-content-md-center">
+    <div class="col titel">
+        <p>مجموعات خيارات الطبق</p>
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-2" style="margin-top: 10px;"  >
+        <p class="itemimg">اسم الصنف</p>
+        </div>
+<div class="col-5">
+    <input 
+    class="form-control"
+    [(ngModel)]="topicsarray[i].name"
+
+    placeholder=" اسم عربي"
+    required
+            >    
+    
+</div>
+<div class="col-5">
+    <input 
+    class="form-control"
+    [(ngModel)]="topicsarray[i].name_en"
+
+    placeholder=" اسم انجليزي"
+    required
+            >    
+    
+           
+</div>
+</div>
+<div class="row">
+    <div class="col-2" style="margin-top: 10px;"  >
+        <p class="itemimg">عدد الخيارات </p>
+        </div>
+        <div class="col-5">
+           
+            
+                    <input 
+                    class="form-control"
+                    type="number"
+                    [(ngModel)]="topicsarray[i].max_option_checks"
+
+                    placeholder="عدد الخيارات"
+                    required
+                         >    
+        </div>
+        <div class="col-5">
+           
+            
+            <input 
+            class="form-control"
+            type="number"
+            [(ngModel)]="topicsarray[i].price"
+
+            placeholder="السعر"
+            required
+                 >    
+</div>
+</div>
+<div class="row justify-content-md-center optionview" *ngFor="let allData of topicsarray[i].menu_options.create; let n = index">
+    <div class="optionContainer col-11 ">
+        <div class="row">
+        
+            <div class="col titel">
+                <p>اسم الخيار</p>
+        
+            </div>
+        
+
+        </div>
+        <div class="row">
+            <div class="col-2" style="margin-top: 10px;"  >
+                <p class="itemimg">اسم الصنف</p>
+                </div>
+        <div class="col-5">
+            <input 
+            class="form-control"
+            [(ngModel)]="topicsarray[i].menu_options.create[n].name"
+        
+            placeholder=" اسم عربي"
+            required
+                    >    
+            
+        </div>
+        <div class="col-5">
+            <input 
+            class="form-control"
+            [(ngModel)]="topicsarray[i].menu_options.create[n].name_en"
+        
+            placeholder=" اسم انجليزي"
+            required
+                    >    
+            
+                   
+        </div>
+        </div>
+    </div>
+    <div class="optionContainer col-11 ">
+     
+        <div class="row">
+            <div class="col-2" style="margin-top: 10px;"  >
+                <p class="itemimg">السعر </p>
+                </div>
+      
+        <div class="col-5">
+            <input 
+            class="form-control"
+            [(ngModel)]="topicsarray[i].menu_options.create[n].price"
+        type="number"
+            placeholder=" السعر "
+            required
+                    >    
+            
+                   
+        </div>
+        </div>
+    </div>
+    </div>
+    
+
+<div class="row justify-content-md-center">
+<div  (click)="addoOptions(i)" class="addOption col-10" matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" >
+اضافة خيار جديد
+</div>
+</div>
+
+</div>
+
+</div>

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <input 
+                type="text" 
+                class="form-control"
+                placeholder="اسم القسم ..."
+                [(ngModel)]="this.CitiesObject.name" 
+                required
+                >              
+        </div>
+    </div>  
+    <div class="col-md-6">
+        <div class="form-group">
+            <input 
+                type="text" 
+                class="form-control"
+                placeholder="اسم  القسم ... انجليزي"
+                required
+                [(ngModel)]="this.CitiesObject.name_en" 
+               >              
+        </div>
+    </div>  
+    <div class="col-md-6">
+        <div class="form-group">
+            <input 
+                type="file" 
+                class="form-control"
+                placeholder="صورة القسم"
+                (change)="Chooseimage($event)"                    
+                        >              
+        </div>
+    </div>  
+
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group mb-3">
+            <button 
+                class="btn btn-block btn-lg btn-info" 
+                (click)="add()">
+                <i nz-icon nzType="loading"  *ngIf="loading" nzTheme="outline" ></i>
+                اضافة
+            </button>                           
+                                
+        </div>                
+    </div>
+</div>

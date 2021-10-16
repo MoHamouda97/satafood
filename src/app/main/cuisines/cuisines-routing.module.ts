@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddComponent } from './add/add.component';
-import { IndexComponent } from './index/index.component';
-import { TabsComponent } from './tabs/tabs.component';
+import { AddEditComponent } from './add-edit/add-edit.component';
+import { CuisinesComponent } from './cuisines.component';
 
 
-const routes: Routes = [{
+const routes: Routes = [ {
   path: '',
   children: [
       {
-          path: 'all/:id',
-          component: IndexComponent ,
+          path: 'all',
+          component: CuisinesComponent ,
           data: {
-              title: 'قائمة المطعم الرئيسية',
+              title: 'اقسام المطاعم',
           },                
           resolve: {
               //offers: AllOffersResolver,
@@ -20,9 +19,9 @@ const routes: Routes = [{
       },
       {
           path: 'add',
-          component: TabsComponent,
+          component: AddEditComponent,
           data: {
-              title: 'اضافة اطباق واقسام القائمة ',
+              title: 'اضافة اقسام المطاعم',
           }, 
                                         
       }          
@@ -33,4 +32,4 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MinMenuRoutingModule { }
+export class CuisinesRoutingModule { }
