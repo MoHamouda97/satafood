@@ -38,6 +38,9 @@ import { GenericService } from 'src/services/generic/generic.service';
 import { AddComponent } from './main/branches/add/add.component';
 import { IndexComponent } from './main/branches/index/index.component';
 
+
+
+
 registerLocaleData(en);
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
