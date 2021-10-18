@@ -1,1 +1,40 @@
-<p>edit works!</p>
+<div class="row bigrow">
+    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            placeholder="اسم المدينة ..."
+                            [(ngModel)]="this.CitiesObject.name" 
+                            required
+                            >              
+                    </div>
+                </div>  
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            placeholder="اسم  المدينة ... انجليزي"
+                            required
+                            [(ngModel)]="this.CitiesObject.name_en" 
+                           >              
+                    </div>
+                </div>  
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input 
+                            type="file" 
+                            class="form-control"
+                            placeholder="صورة للمدينة"
+                            (change)="Chooseimage($event)"                    
+                                    >              
+                    </div>
+                </div>  
+
+
+</div>
+</div>
+</div>

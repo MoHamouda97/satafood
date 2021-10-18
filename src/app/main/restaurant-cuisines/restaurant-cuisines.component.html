@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-4 table-hover" >
+        <a  routerLink="/restaurant-cuisine/add/{{resId}}" matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" nz-button nzType="default"[nzLoading]="isLoadingTwo">
+            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+                  اضافة منطقة لفرع
+    </a>
+
+</div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="table-responsive">
+                <nz-table 
+                    [nzFrontPagination]="false"
+                    [nzData]="dataarray" 
+                    [nzLoading]="loading"
+                    [nzPageSize]="20"
+                    [nzPageIndex]="1"
+                    [nzScroll]="{ x: '240px' }"
+                    (nzPageIndexChange)="onPageChange($event)"
+                    class="table forms-table table-striped table-bordered"
+                   >
+                    <thead>
+                      <tr class="bg-light"> 
+                        <th *ngFor="let head of heads; let i = index">
+                            {{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let allData of dataarray; let i = index" 
+                            style="cursor: pointer; direction: ltr;">
+                           <td >{{allData.cuisines.name}}</td>
+                           <td >{{allData.cuisines.name_en}}</td>
+
+                        </tr>
+                    </tbody>
+                </nz-table>
+                <nz-table [nzData]="dataarray"></nz-table>              
+            </div>
+        </div>
+    </div>
+</div>

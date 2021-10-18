@@ -11,7 +11,7 @@ import { MenuCategories, MenuItems, TownsCreate } from '../cities/citiesModel';
 export class MinMenuService {
 
   constructor(private http: HttpClient) { }
-  getMenuCategories(restId:number) {
+  getMenuCategories(restId:string) {
 
     return this.http.get<Array<MenuCategories>>(`${environment.endpoint}/Menu/getMenuCategories/${restId}`).toPromise();
 

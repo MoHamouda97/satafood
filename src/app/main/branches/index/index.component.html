@@ -1,174 +1,284 @@
-<nz-page-header
-      class="site-page-header"
-      (nzBack)="onBack()"
-      nzBackIcon
-      nzTitle="Title">
-    </nz-page-header>
+<div class="row" >
+    <div class="col-4 table-hover" >
+        <button matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" nz-button nzType="default" (click)="SwitchToAdd()" [nzLoading]="isLoadingTwo">
+            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+                  اضافة فرع
+          </button>
 
-    <div class="container">
-        <div class="row">
-            <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 10px;" >
-                <h6>عناصر القائمة</h6>
-                <button>
-                    <span>ترتيب</span>
-                    <span>
-                        <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"></path></svg>
-                    </span>
-                </button>
-                <button>
-                    <span>اضافة</span>
-                    <span class="MuiButton-startIcon MuiButton-iconSizeSmall"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></span>
-                </button>
-            </div>
+</div>
+</div>
+<div class="row">
     
-            <button class="left">
-                <span>اوردر عليك و الثانى علينا</span>
-                <span>
-                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(239, 74, 132);"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7zm11.77 8.27L13 19.54l-4.27-4.27C8.28 14.81 8 14.19 8 13.5c0-1.38 1.12-2.5 2.5-2.5.69 0 1.32.28 1.77.74l.73.72.73-.73c.45-.45 1.08-.73 1.77-.73 1.38 0 2.5 1.12 2.5 2.5 0 .69-.28 1.32-.73 1.77z"></path></svg>
-                </span>
-            </button>
-            <button class="left">
-                <span>العروض الخاصة</span>
-                <span>
-                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(239, 74, 132);"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7zm11.77 8.27L13 19.54l-4.27-4.27C8.28 14.81 8 14.19 8 13.5c0-1.38 1.12-2.5 2.5-2.5.69 0 1.32.28 1.77.74l.73.72.73-.73c.45-.45 1.08-.73 1.77-.73 1.38 0 2.5 1.12 2.5 2.5 0 .69-.28 1.32-.73 1.77z"></path></svg>
-                </span>
-            </button>
-            <button class="left">
-                <span>كومبو السوشى</span>
-                <span>
-                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(239, 74, 132);"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7zm11.77 8.27L13 19.54l-4.27-4.27C8.28 14.81 8 14.19 8 13.5c0-1.38 1.12-2.5 2.5-2.5.69 0 1.32.28 1.77.74l.73.72.73-.73c.45-.45 1.08-.73 1.77-.73 1.38 0 2.5 1.12 2.5 2.5 0 .69-.28 1.32-.73 1.77z"></path></svg>
-                </span>
-            </button>
-            <button class="left">
-                <span>الكومبو</span>
-                <span>
-                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(239, 74, 132);"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7zm11.77 8.27L13 19.54l-4.27-4.27C8.28 14.81 8 14.19 8 13.5c0-1.38 1.12-2.5 2.5-2.5.69 0 1.32.28 1.77.74l.73.72.73-.73c.45-.45 1.08-.73 1.77-.73 1.38 0 2.5 1.12 2.5 2.5 0 .69-.28 1.32-.73 1.77z"></path></svg>
-                </span>
-            </button>
-            <button class="left">
-                <span>اصنع طبقك الخاص</span>
-            </button>
-            <button class="left">
-                <span>عروض ال40%</span>
-            </button>
-            <button class="left">
-                <span>اكسوتيكس</span>
-            </button>
-            <button class="left">
-                <span>بلح بحر</span>
-            </button>
-            <button class="left">
-                <span>اوشى</span>
-            </button>
-            <button class="left">
-                <span>الذبادى المجمدة</span>
-            </button>
-            <button class="left">
-                <span>الشوربة</span>
-            </button>
-            <button class="left">
-                <span>السلطات</span>
-            </button>
-            <button class="left">
-                <span>المقبلات</span>
-            </button>
-            <button class="left">
-                <span>الاورا ماكى</span>
-            </button>
-            <button class="left">
-                <span>السوشى نيجيرى</span>
-            </button>
-            <button class="left">
-                <span>الساشيمى</span>
-            </button>
-            <button class="left">
-                <span>الهوسو ماكى</span>
-            </button>
-            <button class="left">
-                <span>التماكى</span>
-            </button>
-            <button class="left">
-                <span>الهوت اورا ماكى</span>
-            </button>
-            <button class="left">
-                <span>اطباق اللحم البقرى</span>
-            </button>
-            <button class="left">
-                <span>اطباق الدجاج</span>
-            </button>
-            <button class="left">
-                <span>اطباق الاسماك</span>
-            </button>
-            <button class="left">
-                <span>اطباق الكاليمارى</span>
-            </button>
-            <button class="left">
-                <span>الخضروات</span>
-            </button>
-            <button class="left">
-                <span>الارز</span>
-            </button>
-            <button class="left">
-                <span>النودلز</span>
-            </button>
-            <button class="left">
-                <span>الحلويات</span>
-            </button>
-           
-        </div>
-        </div>
-       
-
-    <div class="container">
-        <div class="row">
-            <div style="justify-content: space-between;align-items: center;margin-bottom: 10px;" >
-                <h6>طلبات القائمة</h6>
-                <button style="display: flex;">
-                    <span>عناصر المسودة</span>
-                </button>
-                <button style="display: flex;">
-                    <span>فى انتظار الموافقة</span>
-                </button>
-                <button style="display: flex;">
-                    <span>العناصر المرفوضة</span>
-                </button>
-                <button style="display: flex;">
-                    <span>العناصر المعتمدة</span>
-                </button>
-        </div>
-    </div>
-</div>
-   
-
-<div class="container">
-    <div class="row">
-        <div class="menu">
-            <h6>عناصر القائمة</h6>
-        </div>
-        <div class="input-group">
-            <div class="form-outline">
-              <input type="search" id="form1" class="form-control" placeholder="بحث فى قائمة" />
-            </div>
-            <button type="button" class="btn btn-primary">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        <div class="menu">
-            <button>
-                <span>ترتيب عناصر القائمة</span>
-                <span>
-                    <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"></path></svg>
-                </span>
-            </button>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+    <div class="col-12">
+        <div class="card">
             <div class="card-body">
-              <h5 class="card-title">عرض 4 افراد</h5>
-              <p class="card-text">50 قطعة سوشي، ٤ شوربة كريمة بالدجاج و المشروم، هوت أند سور أو ذرة، ٤ أطباق نودلز بالدجاج كبير ، ٤ أطباق مقبلات، بطاطس محمرة، طبق سلطة كمتشي كبير، طبق سلطة شانتوج كبير و 4 بيبسي أو 4 عصير برتقال فريش</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+                <h4 class="card-title">عرض الفروع</h4>
+
+                <form class="form" #f="ngForm" style="padding-top: 1.25rem;">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-2">
+                                <input 
+                                    type="text" 
+                                    class="form-control"
+                                    placeholder="اسم الفرع ..." 
+                                    id="name" 
+                                    name="name" 
+                                    ngModel                                      
+                                    #name="ngModel" 
+                                    [ngModelOptions]="{updateOn: 'blur'}">                                
+                            </div>
+                            <div class="col-2">
+                                <select 
+                                    class="form-control"
+                                    id="cat_id" 
+                                    name="cat_id" 
+                                    ngModel                                      
+                                    cat_id 
+                                    #cat_id="ngModel" 
+                                    [ngModelOptions]="{updateOn: 'blur'}"
+                                    [(ngModel)]="selectedCat">
+                                    <option selected value="0">اختر الفئة</option>
+                                    <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+                                </select>
+                            </div>  
+                            <div class="col-2">
+                                <select 
+                                    class="form-control"
+                                    id="subcat_id" 
+                                    name="subcat_id" 
+                                    ngModel                                      
+                                    subcat_id 
+                                    #subcat_id="ngModel" 
+                                    [ngModelOptions]="{updateOn: 'blur'}"
+                                    [(ngModel)]="selectedSubCat">
+                                    <option  value="0">بدون</option>
+                                    <option *ngFor="let sub of subCats" [value]="sub.id">{{sub.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-2">
+                                <input 
+                                    type="number" 
+                                    class="form-control"
+                                    placeholder="السعر ..." 
+                                    id="price" 
+                                    name="price" 
+                                    ngModel                                      
+                                    price 
+                                    #price="ngModel" 
+                                    [ngModelOptions]="{updateOn: 'blur'}">                                  
+                            </div> 
+                            <div class="col-2">
+                                <input 
+                                    type="number" 
+                                    class="form-control"
+                                    placeholder="السعر بعد الخصم ..." 
+                                    id="current_price" 
+                                    name="current_price" 
+                                    ngModel                                      
+                                    current_price 
+                                    #current_price="ngModel" 
+                                    [ngModelOptions]="{updateOn: 'blur'}">      
+                            </div>
+                            <div class="col-1">
+                                <button 
+                                    (click)="filter(f)"
+                                    type="button" 
+                                    class="btn btn-info btn-raised mr-1">
+                                    <span *ngIf="!filterLoading">Filter</span>
+                                    <span *ngIf="filterLoading">
+                                        <i nz-icon nzType="loading" nzTheme="outline"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="col-1">
+                                <button 
+                                    (click)="reset()"
+                                    type="button" 
+                                    class="btn btn-secondary btn-raised mr-1">
+                                    <span>Reset</span>
+                                </button>
+                            </div>                                                                                                               
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="product-box" *ngFor="let pro of this.branches">
+                    <div class="row">
+                     
+                        <div class="col-md-10 branch-info ">
+                            <h3 class="text-left">{{pro.name}} ({{pro.name_en}})</h3>
+
+                            <b style="margin-left: 5px;"> العنوان:</b>
+                            <label 
+                                class="label " 
+                                style="margin-left: 5px;color: black;">{{pro.address}}</label><br>
+                                <b style="margin-left: 5px;">التليفون :</b>
+                                <label 
+                                    class="label label-primary" 
+                                    style="margin-left: 5px;">{{pro.phone}}</label>
+                                    <label 
+                                    class="label label-primary" 
+                                    style="margin-left: 5px;">{{pro.phone_two}}</label>
+                                    <br>
+                                <b style="margin-left: 5px;">الحد الادني :</b>
+                                <div *ngIf="pro.minimum  > 0;then content else other_content">here is ignored</div>    
+<ng-template #content>{{pro.minimum}}</ng-template>
+<ng-template #other_content>لا يوجد</ng-template>
+                             
+    
+                            <div [innerHTML]="pro.description"></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row button-group" style="margin: 15px 0;">
+                                <div class="col-2">
+                                    <button  routerLink="/worketimes/all/{{ pro.id}}" class="btn btn-rounded btn-block btn-info">
+                                        اضافة اوقات الافتتاح
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <a routerLink="/brancheszones/all/{{ pro.id}}" class="btn btn-rounded btn-block btn-warning">
+                                        اضافة مناطق التوزيع
+                                    </a>
+                                </div>                                
+                                <div class="col-2">
+                                    <a 
+                                        routerLink="/products/update/{{pro.id}}" 
+                                        class="btn btn-rounded btn-block btn-success">
+                                        تعديل
+                                    </a>
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn btn-rounded btn-block btn-danger" (click)="confirmDelete(pro.id)">
+                                        حذف
+                                    </button>
+                                </div>                                                                        
+                            </div>
+                        </div>
+                    </div>   
+                </div> 
+                
+                <div class="loader-rapper" style="margin-top: 20px;">
+                    <div class="text-center" *ngIf="paginationLoader">
+                        <i nz-icon nzType="loading" nzTheme="outline"></i>
+                        جار التحميل ...
+                    </div>
+                                     
+                </div>
+            </div>           
+        </div>
     </div>
 </div>
+
+<!-- loader -->
+<div 
+    class="loader"
+    style="    
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        background-color: #f6f6f6;
+    "
+    *ngIf="loader">
+    <div class="loader-wrapper w-100">
+        <img src="./../../../../assets/images/loader.gif" alt="loader" />
+    </div>    
+</div>
+
+<!-- modal -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header" style="direction: rtl;">
+      <button type="button" class="close" style="position: absolute; left: 0;" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+        <form class="form text-right" #f="ngForm" style="padding-top: 1.25rem; direction: rtl;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="percentage">نسبة العرض:</label>
+                        <input 
+                            type="number" 
+                            class="form-control"
+                            placeholder="نسبة العرض ..." 
+                            id="percentage" 
+                            name="percentage" 
+                            ngModel 
+                            required 
+                            percentage 
+                            #percentage="ngModel" 
+                            [ngModelOptions]="{updateOn: 'blur'}">
+                        <small class="form-text text-danger" *ngIf="!percentage.valid && (percentage.dirty || percentage.touched)">
+                            بالرجاء تحديد نسبة بداية العرض!!
+                        </small>
+                    </div>
+                </div>
+                                
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="start_date">تاريخ بداية العرض:</label>
+                        <input 
+                            type="date" 
+                            class="form-control"
+                            placeholder="تاريخ بدية العرض ..." 
+                            id="start_date" 
+                            name="start_date" 
+                            ngModel 
+                            required 
+                            start_date 
+                            #start_date="ngModel" 
+                            [ngModelOptions]="{updateOn: 'blur'}">
+                        <small class="form-text text-danger" *ngIf="!start_date.valid && (start_date.dirty || start_date.touched)">
+                            بالرجاء تحديد تاريخ بداية العرض!!
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="end_date">تاريخ نهاية العرض:</label>
+                        <input 
+                            type="date" 
+                            class="form-control"
+                            placeholder="تاريخ نهاية العرض ..." 
+                            id="end_date" 
+                            name="end_date" 
+                            ngModel 
+                            required 
+                            end_date 
+                            #end_date="ngModel" 
+                            [ngModelOptions]="{updateOn: 'blur'}">
+                        <small class="form-text text-danger" *ngIf="!end_date.valid && (end_date.dirty || end_date.touched)">
+                            بالرجاء تحديد تاريخ نهاية العرض!!
+                        </small>
+                    </div>
+                </div>                                                           
+            </div>                     
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <button 
+                        (click)="addOffer(f)"
+                        type="button" 
+                        style="margin-top: 30px;"
+                        class="btn btn-info btn-raised mr-1" >
+                        <span *ngIf="!offerloader">
+                            اضافة عرض
+                        </span>
+                        <span *ngIf="offerloader">
+                            جار الاضافة ...
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</ng-template> 

@@ -37,8 +37,10 @@ export class MenuCategories {
     name_en:  string;
     restaurant_id:  number;
     id:  number;
+    photo:              string;
 
     towns: Towns;
+  active: boolean;
 }
 export class MenuItems {
     id:                 number;

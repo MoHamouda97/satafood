@@ -1,14 +1,16 @@
 <div class="row mainview">
 <div class="col-4 table-hover" >
-    <button nz-button nzType="default" (click)="loadTwo()" [nzLoading]="isLoadingTwo">
+    <button matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" nz-button nzType="default" (click)="loadTwo()" [nzLoading]="isLoadingTwo">
         <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
               اضافة قسم
       </button>
-<div class="topics"  [class.hovercolor]="mouseOvered" 
-(mouseover)="mouseOvered=true"
-(mouseout)="mouseOvered=false" 
-[class.active]="active == true" 
- *ngFor="let menucats of MenuCat; let i = index"
+<div class="topics"  
+*ngFor="let menucats of MenuCat; let i = index"
+
+[class.hovercolor]="menucats.hover" 
+(mouseover)="menucats.hover = true"
+(mouseout)="menucats.hover = false" 
+[class.active]="menucats.active" 
  (click)="chooseCategory(i)"
 
  >
@@ -21,7 +23,7 @@
 
 </div>
 <div class="col-8" >
-    <button nz-button nzType="default" (click)="loadTwo()" [nzLoading]="isLoadingTwo">
+    <button  matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" nz-button nzType="default" (click)="SwitchToAddTopic()" [nzLoading]="isLoadingTwo">
         <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
       اضافة طبق
       </button>

@@ -1,0 +1,21 @@
+.product-box{
+    background-color: #f8f9fa!important;
+    border-radius: 5px;
+    margin-top: 20px;   
+    padding: 20px;
+    transition: all .3s ease-out;
+}
+
+.product-box:hover{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
+}
+
+.product-box ul li:first-of-type{
+    color: #617b47;
+}
+
+.product-box ul li{
+    color: #23527c;
+    font-size: 13px;
+    font-weight: 600;
+}

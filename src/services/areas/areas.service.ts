@@ -11,6 +11,11 @@ export class AreasService {
 
   
   constructor(private http: HttpClient) { }
+  getAreaList() {
+
+    return this.http.get<Array<TownsCreate>>(`${environment.endpoint}/Cities/Areas/index`).toPromise();
+
+  }
   getTownsList() {
 
     return this.http.get<Array<TownsCreate>>(`${environment.endpoint}/Cities/getTowns`).toPromise();

@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-4 table-hover" >
+        <a  routerLink="/worketimes/add/{{resId}}" matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" nz-button nzType="default"[nzLoading]="isLoadingTwo">
+            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+                  اضافة توقيت افتتاح 
+    </a>
+
+</div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="table-responsive">
+                <nz-table 
+                    [nzFrontPagination]="false"
+                    [nzData]="times" 
+                    [nzLoading]="loading"
+                    [nzPageSize]="20"
+                    [nzPageIndex]="1"
+                    [nzScroll]="{ x: '240px' }"
+                    (nzPageIndexChange)="onPageChange($event)"
+                    class="table forms-table table-striped table-bordered"
+                    *ngIf="times.length >= 1">
+                    <thead>
+                      <tr class="bg-light"> 
+                        <th *ngFor="let head of heads; let i = index">
+                            {{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let allData of times; let i = index" 
+                            style="cursor: pointer; direction: ltr;">
+                           <td >{{allData.day}}</td>
+                           <td >{{allData.open_time}}</td>
+                           <td >{{allData.close_time}}</td>
+                           <td >{{allData.day_en}}</td>
+
+                        </tr>
+                    </tbody>
+                </nz-table>
+                <nz-table [nzData]="times" *ngIf="times.length == 0"></nz-table>              
+            </div>
+        </div>
+    </div>
+</div>

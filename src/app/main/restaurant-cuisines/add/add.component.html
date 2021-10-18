@@ -1,0 +1,38 @@
+<div class="row bigrow">
+    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <nz-select 
+                        style="width: 100%;"
+                        [(ngModel)]="restaurant_cuisines.cuisine_id"
+    
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="اختار اسم المنطقة"
+                        [nzSize]="'large'"
+                        >
+                        <nz-option 
+                            *ngFor="let p of this.zonesList" 
+                            [nzLabel]="p.name" 
+                            [nzValue]="p.id"></nz-option>
+                    </nz-select>             
+                    </div>
+                </div>  
+                </div>
+                </div>
+                </div>
+                <div class="row bigrow">
+
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <button 
+                            class="btn btn-block btn-lg btn-info" 
+                            (click)="add()">
+                            <i nz-icon nzType="loading"   *ngIf="loading" nzTheme="outline" ></i>
+                            اضافة
+                        </button>                           
+                                            
+                    </div>                
+                </div>
+                </div>

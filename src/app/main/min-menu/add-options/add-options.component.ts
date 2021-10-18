@@ -16,6 +16,7 @@ export class AddOptionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   addoOptions(i){

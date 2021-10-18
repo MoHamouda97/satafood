@@ -32,7 +32,29 @@ export const Approutes: Routes = [
       {
         path: 'cities',
         loadChildren: () => import('./main/cities/cities.module').then(m => m.CitiesModule)
-      },      
+      } ,
+      {
+        path: 'branches',
+        loadChildren: () => import('./main/branches/branches.module').then(m => m.BranchesModule)
+      }
+      ,
+      {
+        path: 'restaurants',
+        loadChildren: () => import('./main/restaurants/restaurants.module').then(m => m.RestaurantsModule)
+      }
+      , 
+      {
+        path: 'worketimes',
+        loadChildren: () => import('./main/working-times/working-times.module').then(m => m.WorkingTimesModule)
+      },
+      {
+        path: 'restaurant-cuisine',
+        loadChildren: () => import('./main/restaurant-cuisines/restaurant-cuisines.module').then(m => m.RestaurantCuisinesModule)
+      }, 
+      {
+        path: 'brancheszones',
+        loadChildren: () => import('./main/branches-zones/branches-zones.module').then(m => m.BranchesZonesModule)
+      },     
       {
         path: 'starter',
         loadChildren: () => import('./starter/starter.module').then(m => m.StarterModule)
@@ -65,7 +87,7 @@ export const Approutes: Routes = [
         path: 'apps/email',
         loadChildren: () => import('./apps/email/mail.module').then(m => m.MailModule)
       },
-      { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
+
       {
         path: 'sample-pages',
         loadChildren: () => import('./sample-pages/sample-pages.module').then(m => m.SamplePagesModule)
