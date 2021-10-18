@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import EditComponent from './add/edit/edit.component';
+import  { EditComponent } from './add/edit/edit.component';
 import { IndexComponent } from './index/index.component';
 
 
-const routes: Routes = [ {
+const routes: Routes = [  {
   path: '',
   children: [
       {
           path: 'all',
-          component: IndexComponent,
+          component: IndexComponent ,
           data: {
-              title: 'المدن',
+              title: 'الاقسام الرئيسية',
           },                
           resolve: {
               //offers: AllOffersResolver,
@@ -21,10 +21,10 @@ const routes: Routes = [ {
           path: 'add',
           component: EditComponent,
           data: {
-              title: 'اضافة مدينة',
+              title: 'اضافة القسم الرئيسي',
           }, 
                                         
-      }           
+      }          
   ]
 }];
 

@@ -14,4 +14,10 @@ export class CategoriesService {
     return this.http.get<Array<MenuCategories>>(`${environment.endpoint}/Categories/index`).toPromise();
 
   }
+  add(data) {
+
+    return this.http.post<MenuCategories>(`${environment.endpoint}/Categories/add`,data).toPromise();
+
+  }
 }
+

@@ -21,17 +21,19 @@ ItemId;
   @ViewChild(AddComponent,null) private myChild: AddComponent;
   @ViewChild(AddOptionsComponent,null) private AddOptionsComponent: AddOptionsComponent;
   selectedTabIndex = 0
+  ResId: string;
   constructor(private service:MinMenuService, private navigate: Router, private activatedRoute: ActivatedRoute,private generic: GenericService ) { }
 
   ngOnInit() {
     this.MenuCatId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.ResId = this.activatedRoute.snapshot.paramMap.get('ResId');
 
   }
   async save(){
     if (new validations(document).vlidate() && this.selectedTabIndex == 0){
 
       var formData: any = new FormData();
-      this.myChild.MenuItem.menu_categories_id  =  1 //this.MenuCatId
+      this.myChild.MenuItem.menu_categories_id  =  parseInt(this.MenuCatId)
 
 formData.append("data", JSON.stringify(this.myChild.MenuItem));
 formData.append("img", this.myChild.image);
@@ -44,9 +46,10 @@ if (data.id > 0) {
 }
     }else if (new validations(document).vlidate() && this.selectedTabIndex == 1) {
       console.log(this.AddOptionsComponent.topicsarray)
+      
         this.AddOptionsComponent.topicsarray.forEach ( async (i) => { 
-
-          const data =   await this.service.addNewOptionAndTopicInMenu({"data":this.AddOptionsComponent.topicsarray})
+i.menu_categories_items = this.MenuCatId
+          const data =   await this.service.addNewOptionAndTopicInMenu({"data":i})
          if (data.id > 0) {
         
           this.generic.showNotification('success', "تمت العملية", "تمت اضافة الخيار بنجاح")
@@ -57,7 +60,7 @@ if (data.id > 0) {
 return ;
         }
       })
-      this.navigate.navigate(['/mainmenu/all']);      
+      this.navigate.navigate(['/mainmenu/all/'+this.ResId]);      
 
 
     }

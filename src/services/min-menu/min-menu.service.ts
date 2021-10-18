@@ -35,7 +35,8 @@ export class MinMenuService {
 
   addCategoryMenu(data) {
 
-    return this.http.post<MenuItemsTopics>(`${environment.endpoint}/Categories/add`,data).toPromise();
+    return this.http.post<MenuItemsTopics>(`${environment.endpoint}/Menu/addMenuCategories`,data).toPromise();
 
   }
+  
 }

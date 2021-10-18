@@ -1,11 +1,11 @@
 <div class="row mainview" >
 <div class="col-12">
-<mat-tab-group    dynamicHeight [disableRipple]="true"  [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="check($event);" [color]="'primary'">
+<mat-tab-group    dynamicHeight [disableRipple]="true"  [(selectedIndex)]="selectedTabIndex" [color]="'primary'">
     <mat-tab label="المعلومات" style="color:black" >
 
       <app-add></app-add>
     </mat-tab> 
-    <mat-tab  label="الخيارات" style="color: black" >
+    <mat-tab disabled  label="الخيارات" style="color: black" >
       <div class="example-large-box mat-elevation-z4 " >
         <app-add-options [ItemId]="ItemId"></app-add-options>
 

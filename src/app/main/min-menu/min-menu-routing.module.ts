@@ -19,7 +19,7 @@ const routes: Routes = [{
           }                
       },
       {
-          path: 'add',
+          path: 'add/:id/:ResId',
           component: TabsComponent,
           data: {
               title: 'اضافة اطباق واقسام القائمة ',

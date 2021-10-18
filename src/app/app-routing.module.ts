@@ -91,6 +91,11 @@ export const Approutes: Routes = [
       {
         path: 'sample-pages',
         loadChildren: () => import('./sample-pages/sample-pages.module').then(m => m.SamplePagesModule)
+      },
+
+      {
+        path: 'categories',
+        loadChildren: () => import('./main/categories/categories.module').then(m => m.CategoriesModule)
       }
     ]
   },

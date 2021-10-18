@@ -6,8 +6,8 @@
                         <input 
                             type="text" 
                             class="form-control"
-                            placeholder="اسم المدينة ..."
-                            [(ngModel)]="this.CitiesObject.name" 
+                            placeholder="اسم القسم ..."
+                            [(ngModel)]="this.CatObject.name" 
                             required
                             >              
                     </div>
@@ -17,9 +17,9 @@
                         <input 
                             type="text" 
                             class="form-control"
-                            placeholder="اسم  المدينة ... انجليزي"
+                            placeholder="اسم  القسم ... انجليزي"
                             required
-                            [(ngModel)]="this.CitiesObject.name_en" 
+                            [(ngModel)]="this.CatObject.name_en" 
                            >              
                     </div>
                 </div>  
@@ -28,7 +28,7 @@
                         <input 
                             type="file" 
                             class="form-control"
-                            placeholder="صورة للمدينة"
+                            placeholder="صورة القسم"
                             (change)="Chooseimage($event)"                    
                                     >              
                     </div>
@@ -37,4 +37,16 @@
 
 </div>
 </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group mb-3">
+        <button 
+            class="btn btn-block btn-lg btn-info" 
+            [disabled]="this.CatObject.name === undefined"
+            (click)="add()">
+            <i nz-icon nzType="loading"   *ngIf="loading" nzTheme="outline" ></i>
+            اضافة
+        </button>                           
+                            
+    </div>                
 </div>

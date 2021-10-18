@@ -37,6 +37,9 @@ import { CitiesService } from 'src/services/cities/cities.service';
 import { GenericService } from 'src/services/generic/generic.service';
 
 
+
+
+
 registerLocaleData(en);
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {

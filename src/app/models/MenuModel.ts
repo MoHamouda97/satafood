@@ -23,3 +23,9 @@ export class MenuOption {
     modified:               Date;
     menu_options_topics_id: number;
 }
+export class CategoriesModel {
+    name:                   string;
+    name_en:                string;
+    photo:                  string;
+
+}
