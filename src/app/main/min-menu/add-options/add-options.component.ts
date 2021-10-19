@@ -11,7 +11,7 @@ export class AddOptionsComponent implements OnInit {
   @Input() ItemId  =  1; 
   Options = new MenuOption();
   Optionsarray :  MenuOption[] =  [];
-
+status = 0
   topicsarray :  MenuItemsTopics[] =  [];
   constructor() { }
 
@@ -26,9 +26,8 @@ export class AddOptionsComponent implements OnInit {
 
   addTopic(){
     var newarr = new MenuItemsTopics()
-    newarr.menu_categories_items = 1
-    newarr.required = 1
-    newarr.menu_topic_type_id = 1
+    newarr.required = this.status
+    newarr.price = 0
     newarr.menu_options = new Towns()
     newarr.menu_options.create = new Array()
     this.topicsarray.push(newarr)

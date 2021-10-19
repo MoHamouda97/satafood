@@ -10,14 +10,16 @@ import { MatInputModule, MatTabsModule } from '@angular/material';
 import { TabsComponent } from './tabs/tabs.component';
 import { AddOptionsComponent } from './add-options/add-options.component';
 import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
+import { NzSwitchModule } from 'ng-zorro-antd';
 
 
 @NgModule({
   declarations: [AddComponent, IndexComponent, TabsComponent, AddOptionsComponent, AddCategoryModalComponent],
   imports: [
     CommonModule,
-    
+    SharedModule,
     MatRippleModule,
+    NzSwitchModule,
     MatTabsModule,
 MatInputModule,
     MinMenuRoutingModule,SharedModule

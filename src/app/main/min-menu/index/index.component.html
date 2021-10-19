@@ -42,16 +42,25 @@
                     <ul class="order-details-list list-unstyled">
                         <li class="order-name">
                             <strong>
-                              {{menuitem.name}}
+                              {{menuitem.name}} ({{menuitem.name_en}})
                             </strong>
                         </li>
                         <li class="descitem">
                             {{menuitem.descriptions}}
 
                         </li>
-                        <li class="price">{{menuitem.price}} جنيه </li>
-                        <li>
+                        <div *ngIf="menuitem.price  > 0;then content else other_content">here is ignored</div>    
+                        <ng-template #content>{{menuitem.price}} جنيه</ng-template>
+                        <ng-template #other_content>السعر حسب الاختيار</ng-template>
+                       
+                        <li  *ngFor="let size of menuitem.menu_options_topics">
 
+                            <b   
+                            style="margin-left: 5px;">{{size.name}}:</b>
+                            <label 
+                                class="label label-warning" 
+                                *ngFor="let options of size.menu_options"
+                                style="margin-left: 5px;">{{options.name}}</label>
                             <!--<span *ngIf="order.confirm == 1">
                                 <button class="btn float-left" matRipple>
                                     <i nz-icon nzType="reload" nzTheme="outline"></i>
@@ -66,8 +75,8 @@
                             </span>     -->                   
                         </li>
                     </ul>
-                    <nz-avatar  nzIcon="edit" nzSize="small" style="float: left;top: 29px;"></nz-avatar>
-                    <nz-avatar  nzIcon="delete" nzSize="small" style="float: left;top: 29px;    right: -6px;"></nz-avatar>
+                    <nz-avatar  nzIcon="edit" nzSize="small" style="float: left"></nz-avatar>
+                    <nz-avatar  nzIcon="delete" nzSize="small" style="float: left;   right: -6px;"></nz-avatar>
 
                 </div>
 

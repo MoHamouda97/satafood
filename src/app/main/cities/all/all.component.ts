@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AreasService } from 'src/services/areas/areas.service';
-import { AreasCreate } from 'src/services/cities/citiesModel';
+import { Areas, AreasCreate } from 'src/services/cities/citiesModel';
 
 @Component({
   selector: 'all',
@@ -13,8 +13,9 @@ export class AllComponent implements OnInit {
    constructor(private service:AreasService) { }
  
    async ngOnInit() {
-     const data = await this.service.GetArea()
+     const data = await this.service.GetCities()
      console.log(data)
+     this.AreaData = data
    }
 
 }

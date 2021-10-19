@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesService } from 'src/services/categories/categories.service';
 import { MenuCategories } from 'src/services/cities/citiesModel';
 import { GenericService } from 'src/services/generic/generic.service';
@@ -12,7 +13,7 @@ import * as lang from './../../../../../settings/lang';
 export  class EditComponent implements OnInit {
   image: any;
 CatObject = new MenuCategories()
-  constructor(private service:CategoriesService,private generic: GenericService) { }
+  constructor(private service:CategoriesService,private generic: GenericService, private navigate: Router) { }
 
   ngOnInit() {
   }
@@ -24,14 +25,14 @@ CatObject = new MenuCategories()
       }
       async add() {
            
-        
         var formData: any = new FormData();
         formData.append("data", JSON.stringify(this.CatObject));
         formData.append("img", this.image);
            
             const data = await this.service.add(formData);
             this.generic.showNotification('success', lang.ar.addNewTitle, lang.ar.addNewMsg)
-      
+            this.navigate.navigate(['/categories/all']);      
+
 }
 }
 

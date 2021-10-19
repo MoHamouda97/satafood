@@ -73,6 +73,31 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
     ]
+  }
+  ,{
+    path: '',
+    title: 'الاقسام الرئيسية',
+    icon: 'fas fa-globe',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/categories/all',
+        title: 'عرض',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/categories/add',
+        title: 'اضافة',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
   },{
     path: '',
     title: 'الفروع  ',

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  endpoint: 'http://localhost:3000/api',
-    photoPath: 'http://localhost:3000'
+  endpoint: 'http://satafood.codesroots.com:3000/api'
+,    photoPath: 'http://satafood.codesroots.com:3000'
 
 };
 

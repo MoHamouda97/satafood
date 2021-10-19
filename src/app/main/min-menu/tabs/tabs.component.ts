@@ -44,11 +44,11 @@ if (data.id > 0) {
   this.generic.showNotification('success', "تمت العملية", "تمت اضافة الطبق بنجاح")
 
 }
-    }else if (new validations(document).vlidate() && this.selectedTabIndex == 1) {
+    }else if ( this.selectedTabIndex == 1) {
       console.log(this.AddOptionsComponent.topicsarray)
       
         this.AddOptionsComponent.topicsarray.forEach ( async (i) => { 
-i.menu_categories_items = this.MenuCatId
+i.menu_categories_items = parseInt(this.ItemId)
           const data =   await this.service.addNewOptionAndTopicInMenu({"data":i})
          if (data.id > 0) {
         

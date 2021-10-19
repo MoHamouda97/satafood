@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { validations } from 'src/app/helper/validations';
 import { CitiesData } from 'src/services/cities/citiesModel';
 import { CuisinesService } from 'src/services/cuisines/cuisines.service';
@@ -15,7 +16,7 @@ export class AddEditComponent implements OnInit {
   CitiesObject = new CitiesData();
   loading: boolean;
 
-  constructor(private service :CuisinesService,private generic: GenericService) { }
+  constructor(private service :CuisinesService, private navigate: Router,private generic: GenericService) { }
 
   ngOnInit() {
   }
@@ -32,6 +33,8 @@ export class AddEditComponent implements OnInit {
             formData.append("img", this.image);
         const data = await this.service.add(formData);
         this.generic.showNotification('success', lang.ar.addNewTitle, lang.ar.addNewMsg)
+        this.navigate.navigate(['/cuisines/all/']);      
+
           }  
         else {
           this.generic.showNotification('error', lang.ar.validateerror, lang.ar.validateerror)

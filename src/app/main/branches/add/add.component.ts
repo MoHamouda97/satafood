@@ -4,6 +4,7 @@ import { BranchesService } from 'src/services/branches/branches.service';
 import { GenericService } from 'src/services/generic/generic.service';
 import { branches } from 'src/services/restaurants/RestaurantModel';
 import * as lang from './../../../../settings/lang';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add',
@@ -25,7 +26,7 @@ export class AddComponent implements OnInit {
   ArrayAreas: any;
   isLocationVisible: boolean;
   
-  constructor(private service:BranchesService, private navigate: Router, private activatedRoute: ActivatedRoute,private generic: GenericService) { }
+  constructor(private service:BranchesService,private location: Location, private navigate: Router, private activatedRoute: ActivatedRoute,private generic: GenericService) { }
 
   ngOnInit() {
 
@@ -81,5 +82,6 @@ this.BranchObj.restaurantsId = parseInt(this.resId)
 
       const data = await this.service.add({"data":this.BranchObj});
       this.generic.showNotification('success', lang.ar.addNewTitle, lang.ar.addNewMsg)
+      this.location.back()
     }  
 }

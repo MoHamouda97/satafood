@@ -11,7 +11,7 @@ import { CategoriesService } from 'src/services/categories/categories.service';
 
   export class IndexComponent implements OnInit {
  AreaData : CategoriesModel[] = [];
- heads = ["الاسم","الاسم بالانجليزي"]
+ heads = ["الاسم","الاسم بالانجليزي","الصورة"]
  URL = environment.photoPath
   constructor(private service:CategoriesService) { }
 

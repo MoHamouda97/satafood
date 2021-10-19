@@ -26,9 +26,9 @@ export class AreasService {
     return this.http.post(`${environment.endpoint}/Cities/Areas/add`, data,options).toPromise();
 
   }
-  GetArea() {
+  GetCities() {
 
-    return this.http.get<AreasCreate>(`${environment.endpoint}/Cities/getCities`).toPromise();
+    return this.http.get<Array<AreasCreate>>(`${environment.endpoint}/Cities/getCities`).toPromise();
 
   }
 }

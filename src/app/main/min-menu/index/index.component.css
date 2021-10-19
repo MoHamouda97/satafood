@@ -67,7 +67,7 @@ border: 1px solid rgb(226, 220, 220);
 
 }
 
-.my-orders .order-box .order-details-list li{color: #b5b5b5;}
+.my-orders .order-box .order-details-list li{color: #818181;}
 
 .my-orders .order-box .order-details-list li.order-name{color: #000;}
 
@@ -75,7 +75,7 @@ border: 1px solid rgb(226, 220, 220);
 
 .my-orders .order-box .order-details-list li .in-road{color: #faad14;}
 
-.my-orders .order-box .order-details-list li button{border: 1px solid #7a7a7a;}
+.my-orders .order-box .order-details-list li button{border: 1px solid #818181;}
 
 .my-orders .order-box .order-details-list li button i{
     font-size: 20px;
@@ -88,7 +88,7 @@ border: 1px solid rgb(226, 220, 220);
 @media (min-width: 321px) and (max-width: 767px) {
     .my-orders img{margin-bottom: 10px;}
 }   
-.my-orders img{ width: 100%;}
+.my-orders img{ width: 142px;height: 153px;}
 
 .actions{
     padding: 10px 0;
@@ -115,7 +115,7 @@ border: 1px solid rgb(226, 220, 220);
     font-size: 22px;
 }
 .descitem , .price{
-    font-size: 18px;
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;;
 }
 

@@ -1,1 +1,55 @@
-<p>cuisines works!</p>
+<div class="row">
+    <div class="col-4 table-hover" >
+        <a  routerLink="/categories/add" matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered" nz-button nzType="default"[nzLoading]="isLoadingTwo">
+            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+                  اضافة قسم  
+    </a>
+
+
+</div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="table-responsive">
+                <nz-table 
+                    [nzFrontPagination]="false"
+                    [nzData]="data" 
+                    [nzLoading]="loading"
+                    [nzTotal]="10"
+                    [nzPageSize]="20"
+                    [nzPageIndex]="1"
+                    [nzScroll]="{ x: '240px' }"
+                    (nzPageIndexChange)="onPageChange($event)"
+                    class="table forms-table table-striped table-bordered"
+                    >
+                    <thead>
+                      <tr class="bg-light"> 
+                        <th   *ngFor="let head of heads; let i = index">
+                            {{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr 
+                        *ngFor="let area of AreaData; let i = index"
+                            style="cursor: pointer; direction: ltr;">
+                            <ng-container>
+                                <td style="vertical-align: middle;">{{area.name}}</td>
+                              
+                                <td style="vertical-align: middle;">
+                                    {{area.name_en}}
+                                </td>
+
+                              
+                                <td>
+                                <img src="{{URL}}/{{area.photo}}">
+                            
+                                </td>
+                                <!-- <td style="vertical-align: middle;">{{allData[d] | date:'medium'}}</td> -->
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </div>
+    </div>
+</div>

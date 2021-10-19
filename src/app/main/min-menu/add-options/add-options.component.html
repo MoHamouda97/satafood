@@ -59,17 +59,38 @@
         </div>
         <div class="col-5">
            
-            
-            <input 
-            class="form-control"
-            type="number"
-            [(ngModel)]="topicsarray[i].price"
+            <nz-select 
+            style="width: 100%;"
 
-            placeholder="السعر"
-            required
-                 >    
+            nzShowSearch 
+             
+            nzPlaceHolder="اختار  نوع الخيار"
+            [(ngModel)]="topicsarray[i].menu_topic_type_id"
+
+            [nzSize]="'large'"
+            >
+
+            <nz-option 
+                [nzLabel]="'احادي'" 
+                [nzValue]="1"></nz-option>
+                <nz-option 
+                [nzLabel]="'متعدد'" 
+                [nzValue]="2"></nz-option>
+        </nz-select>  
 </div>
 </div>
+<div class="row">
+    <div class="col-2" style="margin-top: 10px;"  >
+        <p class="itemimg">هل الخيار الزامي؟</p>
+        </div>
+        <div class="col-5">
+            <nz-switch
+            (change)="topicsarray[i].required = $event.target.checked ? 1: 0"
+    ></nz-switch>
+            
+                   
+        </div>
+        </div>
 <div class="row justify-content-md-center optionview" *ngFor="let allData of topicsarray[i].menu_options.create; let n = index">
     <div class="optionContainer col-11 ">
         <div class="row">
