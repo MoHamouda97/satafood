@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { OffersRoutingModule } from './offers-routing.module';
-import { AddComponent } from './add/add.component';
-import { IndexComponent } from './index/index.component';
+import { SharedModule } from 'src/module/shared.module';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 
 @NgModule({
-  declarations: [AddComponent, IndexComponent],
+  declarations: [ ],
   imports: [
     CommonModule,
-    OffersRoutingModule
-  ]
+    SharedModule,
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyCjzzd4nbOiZJx3B53u9ZZAq0tcOsVUBdg' })
+  ],providers:[GoogleMapsAPIWrapper]
 })
 export class OffersModule { }
