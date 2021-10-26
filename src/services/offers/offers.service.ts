@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AreasCreate } from '../cities/citiesModel';
 import { environment } from 'src/environments/environment';
+import { options } from 'src/app/options';
+import { OfferModel } from './OffersModel';
 
 
 @Injectable({
@@ -11,9 +12,9 @@ export class OffersService {
 
   constructor(private http: HttpClient) { }
 
-  GetCities() {
+  GetOffer() {
 
-    return this.http.get<Array<AreasCreate>>(`${environment.endpoint}/Cities/getCities`).toPromise();
+    return this.http.get<Array<OfferModel>>(`${environment.endpoint}/home/getOffers`).toPromise();
 
   }
 }

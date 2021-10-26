@@ -1,0 +1,27 @@
+.card {
+    border-radius: 25px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.text-muted {
+    background-color: antiquewhite;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.left {
+    float: left;
+}
+
+.pad {
+    padding: 20px;
+}
+
+.padding {
+    padding: 0px;
+}

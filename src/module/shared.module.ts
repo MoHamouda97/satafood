@@ -1,7 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgZorroAntdModule, NzAlertModule, NzAvatarModule, NzIconModule, NzMessageModule } from "ng-zorro-antd";
+import { MatTabsModule } from "@angular/material";
+import { NgZorroAntdModule, NzAlertModule, NzAvatarModule, NzCardModule, NzIconModule, NzMessageModule } from "ng-zorro-antd";
 import { AntModule } from "./ant.module";
 import { MatModule } from "./mat.module";
 import { PipesModule } from "./pipes.module";
@@ -17,7 +18,8 @@ import { PipesModule } from "./pipes.module";
         NgZorroAntdModule ,   
         NzMessageModule, 
         NzAlertModule,
-        NzIconModule
+        NzIconModule,
+        NzCardModule 
     ],
     exports: [
         ReactiveFormsModule,
@@ -25,6 +27,8 @@ import { PipesModule } from "./pipes.module";
         NzAvatarModule,
         AntModule,
         MatModule, 
+        NzCardModule ,
+      MatTabsModule,
         PipesModule,          
     ],
     providers: [

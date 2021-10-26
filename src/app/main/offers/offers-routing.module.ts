@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
-import { AreasComponent } from './index/index.component';
+import { OffersComponent } from './index/index.component';
 
 
 const routes: Routes = [  {
@@ -9,7 +9,7 @@ const routes: Routes = [  {
   children: [
       {
           path: 'all',
-          component: AddComponent ,
+          component: OffersComponent ,
           data: {
               title: 'المناطق',
           },                
@@ -19,7 +19,7 @@ const routes: Routes = [  {
       },
       {
           path: 'add',
-          component: AreasComponent,
+          component: AddComponent,
           data: {
               title: 'اضافة منطقة',
           }, 
@@ -32,4 +32,4 @@ const routes: Routes = [  {
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AreasRoutingModule { }
+export class OfferRoutingModule { }
