@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OfferViweModel } from 'src/services/offers/offersViewModel';
 import { AddComponent } from './add/add.component';
 import { OffersComponent } from './index/index.component';
 
@@ -13,9 +14,7 @@ const routes: Routes = [  {
           data: {
               title: 'المناطق',
           },                
-          resolve: {
-              //offers: AllOffersResolver,
-          }                
+                      
       },
       {
           path: 'add',
@@ -30,6 +29,6 @@ const routes: Routes = [  {
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],providers:[]
 })
 export class OfferRoutingModule { }

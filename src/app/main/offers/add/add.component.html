@@ -1,1 +1,137 @@
-<p>add works!</p>
+<div class="row mainview  justify-content-md-center" >
+  
+    <div  class="col-10" matRipple matRippleColor="rgba(0,0,0,.2) " matRippleCentered="centered"  style="margin-top: 10px;     padding-bottom: 22px;        " >
+        <input 
+        hidden 
+        type="file" 
+        #uploader
+        (change)="uploadFile($event)"
+    />
+        <button     (click)="uploader.click()"  class="MuiButtonBase-root jss29 example-ripple-container mat-elevation-z4" tabindex="0" type="button" data-testid="addImage">
+            <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z"></path></svg>
+                <p class="MuiTypography-root MuiTypography-body1">اضافة صورة</p><span class="MuiTypography-root MuiTypography-caption">نوع الصورة (jpg, png) / مساحة الصورة اقل من ٥ مج / حجم الصورة ٣٠٠*٤٠٠</span><span class="MuiTouchRipple-root"></span></button>
+    </div>
+    </div>
+
+<div class="row bigrow mainview">
+<div class="col-md-12">
+
+  
+<div class="row townsinputs">
+<div  class="col">
+
+    <div class="form-group">
+
+        <input 
+        class="form-control location" 
+        placeholder=" اسم المطعم"
+        [(ngModel)]="BranchObj.name"
+        required
+                >    
+        
+    </div>
+                    </div>
+
+                    <div  class="col">
+                        <div class="form-group">
+
+                        <input 
+                        class="form-control"
+                        [(ngModel)]="BranchObj.name_en"
+                        placeholder="اسم المطعم انجليزي"
+                        required
+                             >    
+                         
+                                </div>
+                                </div>
+                                </div>
+                                <div class="row townsinputs">
+                                    <div  class="col">
+                                
+                                        <div class="form-group">
+                                
+                                            <input 
+                                            type="number"
+
+                                            class="form-control location" 
+                                            placeholder="الحد الادني"
+                                            [(ngModel)]="BranchObj.minimum"
+                                            required
+                                                    >    
+                                            
+                                        </div>
+                                                        </div>
+                                
+                                                        <div  class="col">
+                                                            <div class="form-group">
+                                
+                                                            <input 
+                                                            type="number"
+                                                            class="form-control"
+                                                            [(ngModel)]="BranchObj.delivery_time"
+                                                            placeholder="وقت التوصيل"
+                                                            required
+                                                                 >    
+                                                             
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    
+                                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <nz-select 
+                            style="width: 100%;"
+                            [(ngModel)]="BranchObj.category_id"
+                            (ngModelChange)="addnewArea($event)"
+        
+                            nzShowSearch 
+                            nzAllowClear 
+                            nzPlaceHolder="اختار اسم القسم"
+                            [nzSize]="'large'"
+                            >
+                            <nz-option 
+                                *ngFor="let p of this.zonesList" 
+                                [nzLabel]="p.name" 
+                                [nzValue]="p.id"></nz-option>
+                        </nz-select>             
+                        </div>
+                    </div>  
+               
+                    <div  class="col-6">
+            
+                        <div class="form-group">
+            
+                        <input 
+                        type="number"
+                        class="form-control"
+                        [(ngModel)]="BranchObj.taxes"
+                        placeholder=" ضريبة القيمة المضافة  "
+                        required
+                             >        
+                            </div>
+                                    
+                                        </div>
+                </div>
+
+      
+<div class="row">
+            <div class="col-md-12">
+                <div class="form-group mb-3">
+                    <button 
+                        class="btn btn-block btn-lg btn-info" 
+                        (click)="add()">
+                        <i nz-icon nzType="loading"  *ngIf="loading" nzTheme="outline" ></i>
+                        اضافة
+                    </button>                           
+                                        
+                </div>                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- end modal -->

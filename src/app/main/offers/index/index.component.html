@@ -89,7 +89,7 @@
     </div>
   </div> -->
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       
       <div class="card col padding" style="width: 18rem;">
@@ -141,7 +141,62 @@
         </div>
       </div>
   </div>
-</div>
+</div> -->
+
+
+  <div class="row justify-content-around">
+    
+    <div
+    *ngFor="let offer of dataArray; let i = index"
+    class="card col-5">
+    <img 
+    src="{{URL}}/{{offer.menu_categories_items.photo}}"
+    class="img-fluid" />
+    <div class="row">
+          <div class="col-1">
+            <img 
+             src="{{URL}}/{{offer.menu_categories_items.menu_categories.restaurants.logo}}" 
+            width="50px">
+          </div>
+          <div class="col-11">
+            <div class="row">
+
+              <div class="col-8 col-sm-12">
+
+                <small class="text-muted float">
+                  {{offer.percentage}}
+                  <i class="fas fa-cart-plus float"></i>
+                </small>
+
+                <h5 
+                class="card-title">{{offer.menu_categories_items.name}}</h5>
+              </div>
+
+              <div 
+              *ngFor="let offer of dataArray; let i = index"
+              class="col-4 col-sm-12 coloum">
+                <p
+                *ngFor="let cuisinname of offer.menu_categories_items.menu_categories.restaurants.restaurant_cuisine; let m = index"
+                 class="card-text">{{cuisinname.cuisines.name}}</p>
+              </div>
+              <div>
+                <small class="text-muted">      
+                  <p class="card-text back-g">
+                    <i class="fas fa-cart-plus">
+                    </i>{{offer.description}}</p>
+                </small>
+              </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
 
   
 
