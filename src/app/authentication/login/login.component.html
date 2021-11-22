@@ -1,51 +1,64 @@
-<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center; direction: rtl;">
     <div class="auth-box">
         <div id="loginform" [ngClass]="{'d-none': recoverform}">
             <div class="logo">
-                <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
-                <h5 class="font-medium m-b-20">Sign In to Admin</h5>
+                <span class="db">
+                    <img src="assets/images/logo.png" width="37px" alt="logo" />
+                </span>
+                <h5 class="font-medium m-b-20">تسجيل الدخول</h5>
             </div>
             <!-- Form -->
             <div class="row">
                 <div class="col-12">
-                    <form class="form-horizontal m-t-20" id="loginform">
+                    <form class="form-horizontal m-t-20" #f="ngForm" id="loginform">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
                             </div>
-                            <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                placeholder="اسم المستخدم" 
+                                aria-label="Username" 
+                                id="username" 
+                                name="username" 
+                                ngModel 
+                                required 
+                                #username="ngModel"
+                                aria-describedby="basic-addon1">
+                                <small 
+                                    class="form-text text-danger" 
+                                    *ngIf="!username.valid && (username.dirty || username.touched)">
+                                بالرجاء كتابة اسم المستخدم!
+                                </small>                                
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
                             </div>
-                            <input type="text" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                    <a (click)="showRecoverForm()" href="javascript:void(0)" id="to-recover" class="text-dark float-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a>
-                                </div>
-                            </div>
+                            <input 
+                                type="password" 
+                                class="form-control form-control-lg"
+                                placeholder="كلمة المرور" 
+                                aria-label="Password"
+                                id="password" 
+                                name="password" 
+                                ngModel 
+                                required 
+                                #password="ngModel"                                 
+                                aria-describedby="basic-addon1">
+                                <small 
+                                    class="form-text text-danger" 
+                                    *ngIf="!password.valid && (password.dirty || password.touched)">
+                                بالرجاء كتابة كلمة المرور!
+                                </small>                                 
                         </div>
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info" type="submit">Log In</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                                <div class="social">
-                                    <a href="javascript:void(0)" class="btn btn-facebook m-r-5" data-toggle="tooltip" title="" data-original-title="Login with Facebook"> <i aria-hidden="true" class="fab fa-facebook"></i> </a>
-                                    <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="" data-original-title="Login with Google"> <i aria-hidden="true" class="fab fa-google-plus"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group m-b-0 m-t-10">
-                            <div class="col-sm-12 text-center">
-                                Don't have an account? <a href="#/authentication/signup" class="text-info m-l-5"><b>Sign Up</b></a>
+                                <button class="btn btn-block btn-lg btn-info" type="submit" (click)="login(f)">
+                                    تسجيل الدخول
+                                    <i nz-icon nzType="loading" nzTheme="outline" *ngIf="loader"></i>
+                                </button>
                             </div>
                         </div>
                     </form>

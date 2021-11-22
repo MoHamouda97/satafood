@@ -18,7 +18,17 @@
     text-align: center;
     border-radius: 4px;
 }
-.jss29 svg {
+.jss299 {
+    width: 100%;
+    border: 1px dashed #C4C4C4;
+    display: block;
+    padding: 30px;
+    height: 100px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 4px;
+}
+.jss29 svg ,.jss299 svg {
     color: rgb(240, 240, 240);
     font-size: 64px;
     width: 40px;

@@ -1,52 +1,45 @@
 <div class="row bigrow">
-    <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input 
-                            type="text" 
-                            class="form-control"
-                            placeholder="اليوم"
-                            [(ngModel)]="this.times.day" 
-                            required
-                            >              
-                    </div>
+    <div class="col-md-12" 
+    >
+        
+            <div class="row"  *ngFor="let time of this.times;let i = index" >
+                <div class="col-md-2">
+                    {{time.day}}
                 </div>  
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input 
-                            type="text" 
-                            class="form-control"
-                            placeholder="اليوم بالانجليزي"
-                            required
-                            [(ngModel)]="this.times.day_en" 
-                           >              
-                    </div>
-                </div>  
-                <div class="col-md-6">
+                <div *ngIf="time.isActive  == 0;then content else other_content">here is ignored</div>    
+                <ng-template  #content>
+                    <div class="col-md-8   justify-content-md-center">
+                    <div style="text-align: center;" >مغلق <i class="fa fa-lock"></i></div>
+                </div>
+                    </ng-template>
+                <ng-template #other_content>
+                <div class="col-md-4">
+                    وقت الفتح
                     <div class="form-group">
                         <input 
                             type="time" 
                             class="form-control"
                             placeholder="وقت الفتح"
                             required
-                            [(ngModel)]="this.times.open_time" 
+                            [(ngModel)]="time.open_time" 
                            >              
                     </div>
                 </div> 
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    وقت الاغلاق
                     <div class="form-group">
                         <input 
                             type="time" 
                             class="form-control"
                             placeholder="وقت الاغلاق"
                             required
-                            [(ngModel)]="this.times.close_time" 
+                            [(ngModel)]="time.close_time" 
                            >              
                     </div>
                 </div> 
-           
-
+              </ng-template>
+                <nz-switch   [(ngModel)]="time.isActive" ></nz-switch>
+<div *ngIf="i  == 0" style="margin-right: 10px;"   (click)="copy(i)">نسخ</div>
 
 </div>
 <div class="col-md-12">

@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { ROUTES } from './menu-items';
+import { ResTaurantROUTES, ROUTES } from './menu-items';
 import { RouteInfo } from './sidebar.metadata';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -34,9 +34,20 @@ export class SidebarComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {}
+  logout(){
 
+    localStorage.setItem("token","null")
+    this.router.navigate(['/authentication/login']);
+
+  }
   // End open close
   ngOnInit() {
-    this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
+    if (localStorage.getItem("RestaurantId") == null){
+      this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
+
+    }else {
+      this.sidebarnavItems = ResTaurantROUTES.filter(sidebarnavItem => sidebarnavItem);
+
+    }
   }
 }

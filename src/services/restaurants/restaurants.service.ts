@@ -27,6 +27,11 @@ export class RestaurantsService {
     return this.http.post(`${environment.endpoint}/Restaurant/addRestaurants`, data,options).toPromise();
 
   }
+  delete(data: any) {
+
+    return this.http.post<any>(`${environment.endpoint}/Restaurant/deleteRestaurants`, data,options).toPromise();
+
+  }
   addRestCuisines(data: any) {
 
     return this.http.post(`${environment.endpoint}/Restaurant/addCusinesRestaurants`, data,options).toPromise();

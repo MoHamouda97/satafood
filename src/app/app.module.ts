@@ -14,6 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { EffectsModule } from '@ngrx/effects';
 
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
@@ -35,6 +36,12 @@ import en from '@angular/common/locales/en';
 import { CustomHttpInterceptorInterceptor } from './custom-http-interceptor.interceptor';
 import { CitiesService } from 'src/services/cities/cities.service';
 import { GenericService } from 'src/services/generic/generic.service';
+import { AuthGuard } from 'src/services/guard/auth-guard.service';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, reducers } from './dashboards/dashboard-components/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 
@@ -72,7 +79,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RouterModule.forRoot(Approutes, { useHash: false }),
     PerfectScrollbarModule,
     NgMultiSelectDropDownModule.forRoot(),
-    
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+      routerState: RouterState.Minimal
+    }),
     NgZorroAntdModule
   ],
   providers: [
@@ -85,7 +104,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useClass: HashLocationStrategy
     },
     { provide: NZ_I18N, useValue: en_US },
-    {provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorInterceptor, multi: true}
+    ,AuthGuard,
     GenericService,
     CitiesService
   ],

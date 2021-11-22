@@ -11,6 +11,7 @@ export class Restuarant {
     taxes:         number;
     created:       Date;
     modified:      Date;
+    navigationId:number;
 }
 export class branches {
     name :            String;           
@@ -32,7 +33,8 @@ export class branches {
     open_time : String  
     close_time : String  
     day_en    : String  
-    
+    isActive:   number
+
   }
 
   export class restaurant_areas {

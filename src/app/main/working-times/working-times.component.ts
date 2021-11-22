@@ -10,8 +10,9 @@ import { WorkingTimesService } from 'src/services/workingtimes/working-times.ser
 })
 export class WorkingTimesComponent implements OnInit {
   resId;
-times = new working_times();
+times : working_times[];
 heads = ["اليوم","الفتح","الاغلاق","اليوم انجليزي"]
+
   constructor(private service:WorkingTimesService, private navigate: Router, private activatedRoute: ActivatedRoute) { }
 
   async ngOnInit() {

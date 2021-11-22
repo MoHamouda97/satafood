@@ -11,22 +11,27 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-edit.component.css']
 })
 export class AddEditComponent implements OnInit {
-  times = new working_times();
+  times : working_times[];
 
   constructor(private service:WorkingTimesService, private location:Location,private navigate: Router, private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     var resId =  this.activatedRoute.snapshot.paramMap.get('id');
-
-this.times.branchId = parseInt(resId)
+    const data = await this.service.getBranchTimes(resId);
+    this.times = data
   }
   async add() {
     if (new validations(document).vlidate()){
 
-      const data = await this.service.add({"data":this.times});
+      const data = await this.service.update(this.times);
       this.location.back()
     }
   }
-
+copy(i:number){
+   this.times.map((element, index) => {
+    this.times[index].open_time = this.times[i].open_time
+    this.times[index].close_time = this.times[i].close_time
+  })
+}
   
 }

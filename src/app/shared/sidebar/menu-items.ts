@@ -148,3 +148,22 @@ export const ROUTES: RouteInfo[] = [
     ]
   }
  ];
+ export const ResTaurantROUTES: RouteInfo[] = [
+{
+    path: '',
+    title: 'بيانات المطعم',
+    icon: 'fas fa-globe',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/restaurants/all',
+        title: 'عرض',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      }
+    ]
+  }
+ ];

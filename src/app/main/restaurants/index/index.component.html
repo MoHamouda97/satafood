@@ -93,7 +93,7 @@
                     </div>
                 </form>
                 
-                <div class="product-box" *ngFor="let pro of restaurants">
+                <div class="product-box" *ngFor="let pro of restaurants;let i = index">
                     <div class="row">
                         <div class="col-md-2">
                             <img 
@@ -139,13 +139,21 @@
                                                               
                                 <div class="col-2">
                                     <a 
+                                (click)="edit(i)"
                                         routerLink="/products/update/{{pro.id}}" 
                                         class="btn btn-rounded btn-block btn-success">
                                         تعديل
-                                    </a>
+                                </a>
                                 </div>
                                 <div class="col-2">
-                                    <button class="btn btn-rounded btn-block btn-danger" (click)="confirmDelete(pro.id)">
+                                    <button 
+                                    nz-popconfirm
+                                    nzPopconfirmTitle="Are you sure delete this restuarant?"
+                                    (nzOnConfirm)="confirm(pro.id)"
+                                    (nzOnCancel)="cancel()"
+                                    nzPopconfirmPlacement="topLeft"
+                                    nz-button
+                                    class="btn btn-rounded btn-block btn-danger" >
                                         حذف
                                     </button>
                                 </div>                                                                        

@@ -11,12 +11,12 @@ export class WorkingTimesService {
   constructor(private http: HttpClient) { }
   getBranchTimes(Branchid) {
 
-    return this.http.get<working_times>(`${environment.endpoint}/Restaurant/getWorkingTimesForBranch/${Branchid}`).toPromise();
+    return this.http.get<Array<working_times>>(`${environment.endpoint}/WokringTime/addtimes/${Branchid}`).toPromise();
 
   }
-  add(data: any) {
+  update(data: any) {
 
-    return this.http.post(`${environment.endpoint}/Restaurant/addWorkingdays`, data).toPromise();
+    return this.http.post(`${environment.endpoint}/WokringTime/update`, data).toPromise();
 
   }
 }
