@@ -19,11 +19,11 @@ export class ItemsReportsComponent implements OnInit {
   lang: any = lang.ar;
 
   header: any[] = [ 
-    '#', 
-    'رقم الطلب',
-    'القسم',
+   
+    'رقم الطبق',
     'العنصر',
     'السعر',
+    'اجمالي عدد الاطباق',
     'الاجمالي'
   ]; 
   

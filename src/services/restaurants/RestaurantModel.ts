@@ -11,7 +11,14 @@ export class Restuarant {
     taxes:         number;
     created:       Date;
     modified:      Date;
-    navigationId:number;
+    navigationId:number;license_number:string;taxes_number:string;
+}
+
+export class Users {
+  id:            number;
+  username:          string;
+  password:       string;
+
 }
 export class branches {
     name :            String;           

@@ -1,0 +1,16 @@
+
+<!-- ============================================================== -->
+<!-- Start Expensess Filter -->
+<!-- ============================================================== -->
+<app-order-report-filter [marketers]="marketers" [paymenttypes]="paymenttypes" [platforms]="platforms" [tables]="tables" [users]="users"  (loading)="loading = $event" (data)="orders = $event" (pages)="pages = $event"></app-order-report-filter>
+<!-- ============================================================== -->
+<!-- End Expensess Filter -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Start Orders Data -->
+<!-- ============================================================== -->
+<app-order-report-tbl [data]="orders" [pages]="pages" [loading]="loading"></app-order-report-tbl>
+<!-- ============================================================== -->
+<!-- End Orders Data -->
+<!-- ============================================================== -->

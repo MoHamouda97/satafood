@@ -1,8 +1,14 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 declare var $: any;
+import { select, Store } from '@ngrx/store';
 
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/dashboards/dashboard-components/reducers';
+import { selectBestSeller } from 'src/app/dashboards/dashboard1/store/sales-reports/sales-reports.selectors';
+import { BranchesService } from 'src/services/branches/branches.service';
+import { OrdersService } from 'src/services/orders/orders.service';
 
 @Component({
   selector: 'app-full-layout',
@@ -12,11 +18,12 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 export class FullComponent implements OnInit {
   public config: PerfectScrollbarConfigInterface = {};
 
-  constructor(public router: Router) { }
+  constructor(private store: Store<AppState>,public router: Router,public BranchesSerive:BranchesService) { }
 
   tabStatus = 'justified';
 
   public isCollapsed = false;
+  totMonthSales$: Observable<any>;
 
   public innerWidth: any;
   public defaultSidebar: any;
@@ -41,10 +48,13 @@ export class FullComponent implements OnInit {
     this.expandLogo = !this.expandLogo;
   }
 
-  ngOnInit() {
+   async ngOnInit() {
+
     if (this.router.url === '/') {
+      
       this.router.navigate(['/dashboard/dashboard1']);
     }
+
     this.defaultSidebar = this.options.sidebartype;
     this.handleSidebar();
   }

@@ -16,7 +16,7 @@ const routes: Routes = [  {
           },                
                       
       },
-      {
+      { 
           path: 'add',
           component: AddComponent,
           data: {

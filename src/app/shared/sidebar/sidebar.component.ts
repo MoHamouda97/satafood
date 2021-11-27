@@ -3,6 +3,7 @@ import { ResTaurantROUTES, ROUTES } from './menu-items';
 import { RouteInfo } from './sidebar.metadata';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment.prod';
 declare var $: any;
 
 @Component({
@@ -12,6 +13,10 @@ declare var $: any;
 export class SidebarComponent implements OnInit {
   showMenu = '';
   showSubMenu = '';
+  URL = environment.photoPath
+  ResturantName = localStorage.getItem("RestaurantName")
+  ResturantPhoto = localStorage.getItem("RestaurantLogo")
+
   public sidebarnavItems: any[];
   // this is for the open close
   addExpandClass(element: any) {
@@ -42,7 +47,9 @@ export class SidebarComponent implements OnInit {
   }
   // End open close
   ngOnInit() {
-    if (localStorage.getItem("RestaurantId") == null){
+    console.log(localStorage.getItem("RestaurantId"))
+    
+    if (localStorage.getItem("RestaurantId") == "null"){
       this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
 
     }else {

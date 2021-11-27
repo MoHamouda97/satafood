@@ -42,6 +42,9 @@ import { metaReducers, reducers } from './dashboards/dashboard-components/reduce
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { SalesReportsEffect } from './dashboards/dashboard1/store/sales-reports/sales-reports.effects';
+import { SalesReportsResolver } from './dashboards/dashboard1/services/sales-reports.resolver';
+import { AdminSettingComponent } from './main/admin-setting/admin-setting.component';
 
 
 
@@ -65,6 +68,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     BreadcrumbComponent,
     SidebarComponent,
+    AdminSettingComponent,
  
   ],
   imports: [
@@ -85,9 +89,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
+      
     }),
+   
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([SalesReportsEffect]),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal
@@ -107,7 +113,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorInterceptor, multi: true}
     ,AuthGuard,
     GenericService,
-    CitiesService
+    CitiesService,
+
   ],
   bootstrap: [AppComponent]
 })

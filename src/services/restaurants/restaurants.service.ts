@@ -17,6 +17,11 @@ export class RestaurantsService {
     return this.http.get<Array<Restuarant>>(`${environment.endpoint}/Restaurant/getRestaurant`).toPromise();
 
   }
+    getMyRestaurant(id) {
+
+    return this.http.get<Array<Restuarant>>(`${environment.endpoint}/Restaurant/getRestaurantByUser/${id}`).toPromise();
+
+  }
   getCuisines() {
 
     return this.http.get<Array<restaurant_cuisines>>(`${environment.endpoint}/Restaurant/getCusinesList`).toPromise();
@@ -24,7 +29,7 @@ export class RestaurantsService {
   }
   add(data: any) {
 
-    return this.http.post(`${environment.endpoint}/Restaurant/addRestaurants`, data,options).toPromise();
+    return this.http.post<any>(`${environment.endpoint}/Restaurant/addRestaurants`, data,options).toPromise();
 
   }
   delete(data: any) {

@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedOrder"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By Order Status"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('Filter[order_status]', $event)">
+                        <nz-option [nzLabel]="'طلب جديد'" [nzValue]="0"></nz-option>
+                        <nz-option [nzLabel]="'يتم التجهيز'" [nzValue]="1"></nz-option>
+                        <nz-option [nzLabel]="'تم التجهيز'" [nzValue]="2"></nz-option>
+                        <nz-option [nzLabel]="'تم التوصيل'" [nzValue]="3"></nz-option>
+                    </nz-select>                     
+                </div>
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedUser"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By User"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('Filter[user_id]', $event)">
+                        <nz-option 
+                            *ngFor="let u of users" 
+                            [nzLabel]="u[1]" 
+                            [nzValue]="u[0]"></nz-option>
+                    </nz-select>                      
+                </div>                
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedMarketers"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By Marketers"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('Filter[marketer_id]', $event)">
+                        <nz-option 
+                            *ngFor="let m of marketers" 
+                            [nzLabel]="m[1]" 
+                            [nzValue]="m[0]"></nz-option>
+                    </nz-select>                      
+                </div>               
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedPaymenttypes"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By Payment Type"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('Filter[paymenttype_id]', $event)">
+                        <nz-option 
+                            *ngFor="let p of paymenttypes" 
+                            [nzLabel]="p[1]" 
+                            [nzValue]="p[0]"></nz-option>
+                    </nz-select>                      
+                </div>               
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedPlatforms"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By Platforms"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('Filter[platform_id]', $event)">
+                        <nz-option 
+                            *ngFor="let p of platforms" 
+                            [nzLabel]="p[1]" 
+                            [nzValue]="p[0]"></nz-option>
+                    </nz-select>                      
+                </div>               
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedTables"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By Tables"
+                        [nzSize]="'large'"
+                        (ngModelChange)="filter('Filter[table_id]', $event)">
+                        <nz-option 
+                            *ngFor="let t of tables" 
+                            [nzLabel]="t[1]" 
+                            [nzValue]="t[0]"></nz-option>
+                    </nz-select>                      
+                </div>                   
+            </div>       
+        </div>
+    </div>
+</div>

@@ -9,7 +9,7 @@ import { GenericService } from 'src/services/generic/generic.service';
   styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent implements OnInit, AfterViewInit {
-  @Input('sales') sales: any[] = [];
+  @Input('sales') sales?: any[] = [];
   @Input('color') color: any = '';
   @Input('title') title: string = '';
   @Input('type') type: string = '';
@@ -77,5 +77,28 @@ export class BarChartComponent implements OnInit, AfterViewInit {
       }
     })
   }  
+  ngOnChanges(changes) {
+    if(changes.sales.firstChange == false) {
+      console.log(changes)
+      console.log(changes.sales.currentValue)
 
+    this.orderTotal = changes.sales.currentValue.map(s => parseFloat(s[this.orderTotalKey]));
+    if (this.selector == 'week-chart') {
+      this.orderLabels = [
+        'الخميس',
+        'الاربعاء',
+        'الثلاثاء',
+        'الاثنين',
+        'الأحد',
+        'السبت',
+        'الجمعة',
+      ]
+    } else {
+    (this.selector == 'month-chart') ? this.orderLabels = changes.sales.currentValue.map(s => this.service.formatDate(s[this.orderLabelsKey])) : this.orderLabels = changes.sales.currentValue.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey]}`);
+    }
+    (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderTotal.reverse();
+    (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderLabels.reverse();
+    this.ngAfterViewInit()
+    }
+  }
 }

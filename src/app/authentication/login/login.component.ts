@@ -28,7 +28,7 @@ export class LoginComponent {
 
   login(f) {
     const {...obj} = f.form.value;
-    const returnUrl = localStorage.getItem('returnUrl') || '/dashboard/dashboard1';
+    const returnUrl = localStorage.getItem('returnUrl') || '/restaurants/all';
     const CompanyUrl =  '/dashboard/dashboard1'; 
 
     this.loader = true;
@@ -36,19 +36,21 @@ export class LoginComponent {
     this.service.login(obj).subscribe(res => {
       if (res) {
         this.data = res;
-        console.log(this.data)
+        console.log(localStorage.getItem("RestaurantId"))
         localStorage.setItem('token', this.data.token);
         localStorage.setItem('user_id', this.data.user.id);
         localStorage.setItem('username', this.data.user.username);
-        localStorage.setItem('RestaurantId', this.data.user.restaurants.id);
+        localStorage.setItem('RestaurantId', this.data.user.restaurants != null ? this.data.user.restaurants.id : null );
+        localStorage.setItem('RestaurantName', this.data.user.restaurants != null ? this.data.user.restaurants.name : null );
+        localStorage.setItem('RestaurantLogo', this.data.user.restaurants != null ? this.data.user.restaurants.logo : null );
 
         
         this.message.info('تمت عملية تسجيل الدخول بنجاح');  
 
-        if (this.data.user.id != 1 ) {
+        if (this.data.user.user_group_id == 2 ) {
           this.router.navigate([CompanyUrl]);
         } else {
-          this.router.navigate([returnUrl]);
+          this.router.navigate(['/restaurants/all']);
         }
         
         localStorage.removeItem('returnUrl');

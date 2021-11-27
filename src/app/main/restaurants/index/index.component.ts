@@ -17,10 +17,16 @@ export class IndexComponent implements OnInit {
   constructor(private notification: NzNotificationService,private service:RestaurantsService, private navigate: Router, private activatedRoute: ActivatedRoute) { }
 
   async ngOnInit() {
+    console.log(localStorage.getItem("RestaurantId") )
+    if (localStorage.getItem("RestaurantId") == "null"){
+      const data = await this.service.getRestaurant()
+      this.restaurants = data
 
-    const data = await this.service.getRestaurant()
-    console.log(data)
-    this.restaurants = data
+    }else {
+      const data = await this.service.getMyRestaurant(localStorage.getItem("RestaurantId"))
+      this.restaurants = data
+
+    }
   }
   openLg(id,RestId){
     this.navigate.navigate(['/branches/all/'+RestId]);      

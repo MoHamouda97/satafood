@@ -12,7 +12,7 @@ export class OrdersService {
   constructor(private http: HttpClient) { }
 
   filterOrders(filterBy) {    
-    return this.http.post(`${environment.endpoint}/orderdetails/sellallitems.json`, filterBy)
+    return this.http.post(`${environment.endpoint}/orderdetails/sellallitems/5.json`, filterBy)
   }
 
   getCompanyShipOrders() {   

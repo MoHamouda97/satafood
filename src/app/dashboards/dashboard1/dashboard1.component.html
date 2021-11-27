@@ -1,6 +1,25 @@
 <!-- ============================================================== -->
 <!-- Info card -->
 <!-- ============================================================== -->
+
+<nz-spin *ngIf="loading "  nzTip="Loading...">
+   
+  </nz-spin>
+<nz-select 
+style="width: 50%;margin: 0 auto;"
+[(ngModel)]="selectedProvince"
+(ngModelChange)="ChangeBranch($event)"
+nzShowSearch 
+nzAllowClear 
+nzPlaceHolder="اسم الفرع"
+[nzSize]="'large'"
+>
+<nz-option 
+*ngFor="let p of this.BranchArray" 
+[nzLabel]="p.name" 
+[nzValue]="p.id"
+   ></nz-option>
+</nz-select> 
 <app-info-card 
     [totMonthSales]="totMonthSales$ | async"
     [totWeekSales]="totWeekSales$ | async"></app-info-card>
@@ -71,8 +90,8 @@
         <app-stats-info
             [infoClass]="'btn-danger'"
             [infoIcon]="'fas fa-money-bill-alt'"
-            [infoTxt]="'المصروفات'"
-            [infoTotal]="expensessTotal"
+            [infoTxt]="'المستحقات'"
+            [infoTotal]="expenses$ | async"
         ></app-stats-info>
     </div>
 
@@ -80,7 +99,7 @@
         <app-stats-info
             [infoClass]="'btn-danger'"
             [infoIcon]="'fas fa-money-bill-alt'"
-            [infoTxt]="'السلف'"
+            [infoTxt]="'الطلبات اليومية'"
             [infoTotal]="loansTotal"
         ></app-stats-info>
     </div>
@@ -127,7 +146,7 @@
 <!-- ============================================================== -->
 <!-- month & week details sales chart -->
 <!-- ============================================================== -->
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-6 col-lg-6">
 
         <app-bar-chart 
@@ -149,7 +168,7 @@
             [orderLabelsKey]="'catname'"
             [orderTotalKey]="'SumTotal'"></app-bar-chart>
     </div>
-</div>
+</div> -->
 <!-- ============================================================== -->
 <!--  month & week details sales chart -->
 <!-- ============================================================== -->
@@ -157,7 +176,7 @@
 <!-- ============================================================== -->
 <!-- month expensess -->
 <!-- ============================================================== -->
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-6">
         <app-bar-chart 
             [sales]="expensesCatMonth$ | async" 
@@ -179,7 +198,7 @@
             [orderLabelsKey]="'categoryname'"
             [orderTotalKey]="'SumTotal'"></app-bar-chart>
     </div>
-</div>
+</div> -->
 <!-- ============================================================== -->
 <!--  month expensess -->
 <!-- ============================================================== -->
@@ -187,7 +206,7 @@
 <!-- ============================================================== -->
 <!-- most selling items -->
 <!-- ============================================================== -->
-<!-- <app-items-reports [title]="lang.mostSellingTxt" [data]="itemsDetails$ | async" [categories]="itemsCategories$ | async"></app-items-reports> -->
+<app-items-reports [title]="lang.mostSellingTxt" [data]="itemsDetails$ | async" [categories]="itemsCategories$ | async"></app-items-reports>
 <!-- ============================================================== -->
 <!-- most selling items -->
 <!-- ============================================================== -->
@@ -195,10 +214,10 @@
 <!-- ============================================================== -->
 <!-- Income & Expenses -->
 <!-- ============================================================== -->
-<app-info-tbl
+<!-- <app-info-tbl
     [title]="lang.moneyFlowTxt"
     [header]="incomeExpensesHeader"
-    [data]="incomeExpenses"></app-info-tbl>
+    [data]="incomeExpenses"></app-info-tbl> -->
 <!-- ============================================================== -->
 <!-- Income & Expenses -->
 <!-- ============================================================== -->

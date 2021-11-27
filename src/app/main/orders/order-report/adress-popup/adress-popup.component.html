@@ -1,0 +1,43 @@
+<nz-modal
+    [(nzVisible)]="isVisible" 
+    [nzTitle]="'تفاصيل'" 
+    (nzOnCancel)="handleCancel()"
+    nzWidth="60%"
+    [nzStyle]="{ top: '20px' }"
+    nzClassName="lang-ar">
+    <div class="row">
+        <div class="col-md-4">
+            <strong>الاسم الاول :</strong>
+            {{data.first_name}}
+        </div>
+        <div class="col-md-4">
+            <strong>الاسم الاخير :</strong>
+            {{data.last_name}}
+        </div>
+        <div class="col-md-4">
+            <strong>رقم الهاتف :</strong>
+            {{data.phone}}
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+        <div class="col-md-6">
+            <strong>العنوان :</strong>
+            {{data.address}}
+        </div>
+        <div class="col-md-6">
+            <strong>الملاحظات :</strong>
+            {{data.notes}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <agm-map  [latitude]="data.latitude" [longitude]="data.longitude" [zoom]="zoom">
+                        <agm-marker [latitude]="data.latitude" [longitude]="data.longitude"></agm-marker>
+                    </agm-map> 
+                </div>
+            </div>        
+        </div>
+    </div>
+</nz-modal>

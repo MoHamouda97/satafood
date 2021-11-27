@@ -24,6 +24,11 @@ export const Approutes: Routes = [
       },
       
       {
+        path: 'orders',
+        loadChildren: () => import('./main/orders/order.module').then(m => m.OrdersModule)
+      }
+      ,
+      {
         path: 'cuisines',
         loadChildren: () => import('./main/cuisines/cuisines.module').then(m => m.CuisinesModule)
       }

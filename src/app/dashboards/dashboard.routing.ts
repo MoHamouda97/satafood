@@ -26,7 +26,7 @@ export const DashboardRoutes: Routes = [
         }
         ,
         resolve: {
-          // SalesReports: SalesReportsResolver,
+           SalesReports: SalesReportsResolver,
           // ItemsReports: ItemsReportsResolver,
           // MonthReports: MonthReportsResolver,
           // WeekReports: WeekReportsResolver,

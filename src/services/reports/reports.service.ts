@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { shareReplay } from 'rxjs/operators';
+import { Reports } from 'src/app/dashboards/dashboard1/store/ReportsModel';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,15 @@ export class ReportsService {
 
   constructor(private http: HttpClient) { }
 
-  orderReport() : Observable<any> {
-    return this.http.get(`${environment.endpoint}/orders/getorderReport.json`)
+  orderReport(id) : Observable<Reports> {
+    return this.http.get(`${environment.endpoint}/orders/getorderReport/${id}`)
       .pipe(
         shareReplay()
       )
   }
 
   itemsReport() : Observable<any> {
-    return this.http.get(`${environment.endpoint}/orderdetails/sellallitems.json`)
+    return this.http.get(`${environment.endpoint}/orderdetails/sellallitems/5.json`)
       .pipe(
         shareReplay()
       )

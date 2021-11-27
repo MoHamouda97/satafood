@@ -39,22 +39,21 @@
             <tbody>
                 <tr *ngFor="let d of headerTable.data" style="cursor: pointer;" (click)="getRecipes(d.item.itemreceipes)">
                     <td>
-                        {{d.item.id}}
+                        {{d.menu_categories_items.id}}
                     </td>
+                                      
+                 
                     <td>
-                        {{d.order_id}}
-                    </td>                     
-                    <td>
-                        {{d.item.subcategory.category.name}}
-                    </td>
-                    <td>
-                        {{d.item.name}}
+                        {{d.menu_categories_items.name}}
                     </td>                       
                     <td>
-                        {{d.item.price}}
+                        {{d.menu_categories_items.price}}
                     </td>                                             
                     <td>
-                        {{d.totalitemamount}}
+                        {{d.itemamount}}
+                    </td> 
+                    <td>
+                        {{d.itemtotal}}
                     </td>                        
                 </tr>
             </tbody>

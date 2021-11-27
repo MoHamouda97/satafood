@@ -5,7 +5,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/r
 import { first, tap, filter, finalize } from 'rxjs/operators';
 import { AppState } from 'src/app/apps/email/app.state';
 import { select, Store } from '@ngrx/store';
-import { loadSalesReports } from '../store/sales-reports/sales-reports.actions';
+import { GetBranches, IsLoading } from '../store/sales-reports/sales-reports.actions';
 import { isSalesReportsLoaded } from '../store/sales-reports/sales-reports.selectors';
 
 @Injectable()
@@ -22,7 +22,8 @@ export class SalesReportsResolver implements Resolve<any> {
                 tap(SalesReportsLoaded => {
                     if (!this.loading && !SalesReportsLoaded) {
                         this.loading = true;
-                        this.stroe.dispatch(loadSalesReports())
+                     //   this.stroe.dispatch(new IsLoading(true))
+                        this.stroe.dispatch(new GetBranches())
                     }
                 }),
                 filter(SalesReportsLoaded => SalesReportsLoaded),

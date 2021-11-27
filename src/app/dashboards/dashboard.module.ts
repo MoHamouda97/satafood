@@ -80,6 +80,7 @@ import { ItemsReportsComponent } from './dashboard-components/items-reports/item
 import { StatsInfoComponent } from './dashboard-components/stats-info/stats-info.component';
 import { BarChartComponent } from './dashboard-components/bar-chart/bar-chart.component';
 import { InfoTblComponent } from './dashboard-components/info-tbl/info-tbl.component';
+import { NzAlertModule, NzSpinModule } from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
@@ -92,10 +93,11 @@ import { InfoTblComponent } from './dashboard-components/info-tbl/info-tbl.compo
     PerfectScrollbarModule,
     CalendarModule.forRoot(),
     NgxChartsModule,
+    NzSpinModule,
+NzAlertModule,
     NgxDatatableModule,
     EffectsModule.forFeature([
       SalesReportsEffect,
-      ItemsReportsEffect,
       MonthReportsEffect,
       WeekReportsEffect,
       OtherReportsEffect,
@@ -106,6 +108,7 @@ import { InfoTblComponent } from './dashboard-components/info-tbl/info-tbl.compo
       ExpensesCatMonthReportsEffect,
     ]),
     StoreModule.forFeature('SalesReports', SalesReportsReducer), 
+    
     StoreModule.forFeature('ItemsReports', ItemsReportsReducer), 
     StoreModule.forFeature('MonthReports', MonthReportsReducer), 
     StoreModule.forFeature('WeekReports', WeekReportsReducer), 
@@ -140,6 +143,7 @@ import { InfoTblComponent } from './dashboard-components/info-tbl/info-tbl.compo
     SalesComponent,
     SalesIncomeComponent,
     InfoTblComponent,
+    
     TasklistComponent,
     UserProfileComponent,
     UserDetailsComponent,
@@ -151,11 +155,11 @@ import { InfoTblComponent } from './dashboard-components/info-tbl/info-tbl.compo
   ],
   providers: [
     SalesReportsResolver,
-    ItemsReportsResolver,
-    MonthReportsResolver,
-    WeekReportsResolver,
-    OtherReportsResolver,
-    IncomeExpensesReportResolver,
+    //ItemsReportsResolver,
+    //MonthReportsResolver,
+    //WeekReportsResolver,
+    //OtherReportsResolver,
+    //IncomeExpensesReportResolver,
     ExpensesReportsResolver,
     LoansReportsResolver,
     ExpensesCatReportsResolver,

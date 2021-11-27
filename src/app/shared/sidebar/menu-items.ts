@@ -165,5 +165,22 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       }
     ]
+  },
+  {
+    path: '',
+    title: 'التقارير',
+    icon: 'fas fa-globe',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/dashboard/dashboard1',
+        title: 'عرض',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      }
+    ]
   }
  ];

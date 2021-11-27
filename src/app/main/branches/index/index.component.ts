@@ -13,10 +13,12 @@ branches = new Array<Restuarant>();
 resId;
   constructor(private service:BranchesService, private navigate: Router, private activatedRoute: ActivatedRoute) { }
 
- async ngOnInit() {
+  ngOnInit() {
  this.resId =  this.activatedRoute.snapshot.paramMap.get('id');
-    const data = await this.service.getRestaurant(this.resId)
-    this.branches = data
+    const data = this.service.getRestaurant(this.resId).subscribe(res => {
+      this.branches = res;
+
+    })
   }
   SwitchToAdd(){
     this.navigate.navigate(['/branches/add/'+this.resId]);      

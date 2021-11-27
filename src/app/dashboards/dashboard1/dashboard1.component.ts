@@ -1,6 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/apps/email/app.state';
 import * as lang from './../../../settings/lang';
 import { selectExpensesCatMonthReportsQuery } from './store/expenses-cat-month-reports/expenses-cat-month-reports.selectors';
@@ -11,14 +11,21 @@ import { selectItemsReportsDetails, selectItemsReportsCategories } from './store
 import { selectLoansReportsQuery } from './store/loans-reports/loans-reports.selectors';
 import { selectMonthReportsQuery, selectMonthReportsOffer } from './store/month-reports/month-reports.selectors';
 import { selectMarketersOrders, selectPlatformsOrders, selectPaymenttypesOrders } from './store/other-reports/other-reports.selectors';
-import { selectTotalMonthChart, selectTotalMonthSales, selectTotalWeekChart, selectTotalWeekSales } from './store/sales-reports/sales-reports.selectors';
 import { selectWeekReportsQuery, selectWeekReportsOffer } from './store/week-reports/week-reports.selectors';
+import { selectTotalMonthSales, selectTotalWeekSales, selectTotalMonthChart, selectTotalWeekChart, selectBestSeller, selectOrderPayment, isSalesReportsLoaded, IsLoadings, selectMydues } from './store/sales-reports/sales-reports.selectors';
+import { loadMonthReports } from './store/month-reports/month-reports.actions';
+import { IsLoading, loadSalesReportss } from './store/sales-reports/sales-reports.actions';
+import { BranchesService } from 'src/services/branches/branches.service';
+import { Restuarant } from 'src/services/restaurants/RestaurantModel';
+import { ReportsService } from 'src/services/reports/reports.service';
+import { Confirgration } from './store/ReportsModel';
 
 @Component({
   templateUrl: './dashboard1.component.html',
   styleUrls: ['./dashboard1.component.css']
 })
-export class Dashboard1Component implements AfterViewInit {
+export class Dashboard1Component implements OnInit {
+
   totMonthSales$: Observable<any>;
   totWeekSales$: Observable<any>;
   monthChart$: Observable<any>;
@@ -37,7 +44,7 @@ export class Dashboard1Component implements AfterViewInit {
   loans$: Observable<any>;
   expensesCat$: Observable<any>;
   expensesCatMonth$: Observable<any>;
-
+loading : boolean;
   allWeekChartData: any = [];
   allMonthChartData: any = [];
   marketersOrders: any[] = [];
@@ -46,6 +53,7 @@ export class Dashboard1Component implements AfterViewInit {
   incomeExpenses: any[] = [];
   expensessTotal: number = 0;
   loansTotal: number = 0;
+  BranchArray: Restuarant[] = [];
 
   incomeExpensesHeader: any[] = [
     'التاريخ',
@@ -62,19 +70,35 @@ export class Dashboard1Component implements AfterViewInit {
   monthColors: any[] = ['#4798e8', '#01c0c8'];
 
   lang: any = lang.ar
+  ChangeBranch($event) {
+    console.log( $event)
+   this.store.dispatch(new loadSalesReportss($event));
+   this.loading = true
 
-  constructor(private store: Store<AppState>) {}
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
+
   }
+  constructor(private store: Store<AppState>,public branchlist:BranchesService,public reportService:ReportsService) {
+    const data =  this.branchlist.getRestaurant(localStorage.getItem("RestaurantId"))
+    data.subscribe(res => {
+      console.log(res)
+      this.BranchArray = res
 
-  ngOnInit() {
-    // this.totMonthSales$ = this.store.pipe(select(selectTotalMonthSales));
-    // this.totWeekSales$ = this.store.pipe(select(selectTotalWeekSales));
+    })
+   //
+  }
+ 
+   ngOnInit() {
 
-    // this.monthChart$ = this.store.pipe(select(selectTotalMonthChart));
-    // this.weekChart$ = this.store.pipe(select(selectTotalWeekChart));
+    this.totMonthSales$ = this.store.pipe(select(selectTotalMonthSales));
+  
+    this.totWeekSales$ = this.store.pipe(select(selectTotalWeekSales));
 
+    this.monthChart$ = this.store.pipe(select(selectTotalMonthChart));
+    this.weekChart$ = this.store.pipe(select(selectTotalWeekChart));
+     this.store.pipe(select(IsLoadings)).subscribe(data=>{
+      console.log(data)
+     this.loading = data
+    })
     // this.weekQueryChart$ = this.store.pipe(select(selectWeekReportsQuery))
     // this.weekQueryChart$.subscribe(res => this.allWeekChartData = res);
 
@@ -98,8 +122,14 @@ export class Dashboard1Component implements AfterViewInit {
     //   }
     // )
 
-    // this.itemsDetails$ = this.store.pipe(select(selectItemsReportsDetails));
+    this.itemsDetails$ = this.store.pipe(select(selectBestSeller));
     // this.itemsCategories$ = this.store.pipe(select(selectItemsReportsCategories));
+    this.expenses$ = this.store.pipe(select(selectMydues));
+    this.expenses$.subscribe(res => {
+      if (res != null){
+       console.log(res) 
+      }
+       });
 
     // this.marketersOrders$ = this.store.pipe(select(selectMarketersOrders));
     // this.marketersOrders$.subscribe(res => this.marketersOrders = res);
@@ -109,23 +139,24 @@ export class Dashboard1Component implements AfterViewInit {
     // this.platFormsOrders$.subscribe(res => this.platFormsOrders = res);
     // this.platFormsOrders = this.platFormsOrders.filter(p => Boolean(p["platform"]))
 
-    // this.payments$ = this.store.pipe(select(selectPaymenttypesOrders));
-    // this.payments$.subscribe(res => this.payments = res);
-    // this.payments = this.payments.filter(p => Boolean(p["paymenttype"]))
-
+    this.payments$ = this.store.pipe(select(selectOrderPayment));
+    this.payments$.subscribe(res => { this.payments = res  });
+    this.payments =    this.payments.filter(p => Boolean(p["paymenttype"]))
+    
+  
     // this.incomeExpenses$ = this.store.pipe(select(selectIncomeExpensesReportEntity));
     // this.incomeExpenses$.subscribe( res => this.incomeExpenses = this.moneyFlow(res[0]["allsales"], res[0]["Expenses"], res[0]["StaffPayments"]) )
     
-    // this.expenses$ = this.store.pipe(select(selectExpensesReportsQuery));
-    // this.expenses$.subscribe(res => this.expensessTotal = res.map(val => {return val["SumTotal"]}).reduce((prev, curr) => prev + curr) )
-  
+
     // this.loans$ = this.store.pipe(select(selectLoansReportsQuery));
     // this.loans$.subscribe(res => (res.length > 0) ? this.loansTotal = res[0]["SumTotal"] : this.loansTotal = 0);
 
     // this.expensesCat$ = this.store.pipe(select(selectExpensesCatReportsQuery));
     // this.expensesCatMonth$ = this.store.pipe(select(selectExpensesCatMonthReportsQuery));
   }
-
+  ngOnChanges(changes: SimpleChanges) {
+console.log(changes)
+  }
   moneyFlow(income: any[], expenses: any[], loans: any[]) {
     let incomeExpenses: any [] = [];
 
@@ -151,4 +182,5 @@ export class Dashboard1Component implements AfterViewInit {
 
     return incomeExpenses;
   }
+
 }
