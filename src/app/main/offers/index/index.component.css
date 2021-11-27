@@ -1,0 +1,44 @@
+.row {
+    width: 100%;
+    float: left;
+}
+
+.card {
+    border-radius: 25px;
+    border: aliceblue;
+}
+
+.card-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 16px;
+    color: darkgray;
+}
+
+
+.back-g {
+    background-color: antiquewhite;
+    padding: 10px;
+    font-weight: bold;
+    color: orange;
+    border-radius: 10px;
+    width: 50%;
+    font-size: 16px;
+    width: 100%;
+}
+
+.float {
+    float: left;
+    font-size: 20px;
+    color: orange;
+    padding: inherit;
+}
+
+.coloum {
+    display: flex;
+    text-shadow: 0 0 black;
+
+}

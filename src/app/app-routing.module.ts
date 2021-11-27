@@ -107,7 +107,7 @@ export const Approutes: Routes = [
       },
 
       {
-        path: 'categories',
+        path: 'offers',
         loadChildren: () => import('./main/offers/offers.module').then(m => m.OffersModule)
       }
     ]

@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="table-responsive">
@@ -25,15 +25,15 @@
                         *ngFor="let area of AreaData; let i = index"
                             style="cursor: pointer; direction: ltr;">
                             <ng-container>
-                                <td style="vertical-align: middle;">{{area.name}}</td>
+                                <td style="vertical-align: middle;">{{OfferArray.id}}</td>
                               
                                 <td>
-                                    {{area.name_en}}
+                                    {{OfferArray.name_en}}
                                 </td>
                                 <td>
-                                    {{area.towns.name}}
+                                    {{OfferArray.restaurant_id}}
                                 </td>
-                                <!-- <td style="vertical-align: middle;">{{allData[d] | date:'medium'}}</td> -->
+                                <td style="vertical-align: middle;">{{allData[d] | date:'medium'}}</td>
                             </ng-container>
                         </tr>
                     </tbody>
@@ -41,4 +41,168 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<!-- <nz-card style="width:300px;" [nzCover]="coverTemplate" [nzActions]="[actionSetting, actionEdit, actionEllipsis]">
+    <nz-card-meta
+      nzTitle="Card title"
+      nzDescription="This is the description"
+      [nzAvatar]="avatarTemplate"
+    ></nz-card-meta>
+  </nz-card>
+  <ng-template #avatarTemplate>
+    <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+  </ng-template>
+  <ng-template #coverTemplate>
+    <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />
+  </ng-template> -->
+
+  <!-- <div class="container">
+    <div class="row">
+      <div class="card col col-md-6" style="width: 18rem;">
+        <img src="../../../../assets/images/download (2).jpg">
+        <div class="card-body col-sm-3">
+          <div class="pic">
+            <img src="../../../../assets/images/kfc.png" width="60px">
+          </div>
+            <div class="col-sm-9">
+              <div class="row">
+                divv
+              <h5 class="card-title col-sm-12">دجاج كنتاكى</h5>
+              <p class="card-text col-sm-12">دجاج مقرمشة - وجبات سريعة - سلطات</p>
+          </div>
+        </div>
+          
+          <i class="fas fa-user left"></i>
+        </div>
+      </div>
+    
+      <div class="card col col-md-6" style="width: 18rem;">
+        <img src="../../../../assets/images/images (1).jpg">
+        <div class="card-body">
+          <img src="../../../../assets/images/mac.png" width="60px">
+
+          <h5 class="card-title">ماكدونالز</h5>
+          <p class="card-text">دجاج مقرمشة - وجبات سريعة - سلطات</p>
+          <i class="fas fa-user left"></i>
+        </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="container">
+    <div class="row">
+      
+      <div class="card col padding" style="width: 18rem;">
+        <img src="../../../../assets/images/images (1).jpg">
+        <div class="container">
+          <div class="row pad">
+            <div class="col-1">
+              <img src="../../../../assets/images/mac.png" width="60px"  class="left">
+            </div>
+            <div class="col-11">
+              <div class="row">
+                <div class="col-8 col-sm-12">
+                  <h5 class="card-title">ماكدونالز</h5>
+                </div>
+                <div class="col-4 col-sm-12">
+                  <p class="card-text">دجاج مقرمشة - وجبات سريعة - سلطات</p>
+                  <small class="text-muted">
+                    <i class="fas fa-cart-plus"></i>خصم 15% على اى طلب بالمطعم
+                  </small>
+                </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="card col padding" style="width: 18rem;">
+      <img src="../../../../assets/images/download (2).jpg">
+      <div class="container">
+        <div class="row pad">
+          <div class="col-1">
+            <img src="../../../../assets/images/kfc.png" width="60px"  class="left">
+          </div>
+          <div class="col-11">
+            <div class="row">
+              <div class="col-8 col-sm-12">
+                <h5 class="card-title">دجاج كنتاكى</h5>
+              </div>
+              <div class="col-4 col-sm-12">
+                <p class="card-text">دجاج مقرمشة - وجبات سريعة - سلطات</p>
+               <small class="text-muted">
+                    <i class="fas fa-cart-plus"></i>خصم 15% على اى طلب بالمطعم
+                  </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+  </div>
+</div> -->
+
+
+  <div class="row justify-content-around">
+    
+    <div
+    *ngFor="let offer of dataArray; let i = index"
+    class="card col-5">
+    <img 
+    src="{{URL}}/{{offer.menu_categories_items.photo}}"
+    class="img-fluid" />
+    <div class="row">
+          <div class="col-1">
+            <img 
+             src="{{URL}}/{{offer.menu_categories_items.menu_categories.restaurants.logo}}" 
+            width="50px">
+          </div>
+          <div class="col-11">
+            <div class="row">
+
+              <div class="col-8 col-sm-12">
+
+                <small class="text-muted float">
+                  {{offer.percentage}}
+                  <i class="fas fa-cart-plus float"></i>
+                </small>
+
+                <h5 
+                class="card-title">{{offer.menu_categories_items.name}}</h5>
+              </div>
+
+              <div 
+              *ngFor="let offer of dataArray; let i = index"
+              class="col-4 col-sm-12 coloum">
+                <p
+                *ngFor="let cuisinname of offer.menu_categories_items.menu_categories.restaurants.restaurant_cuisine; let m = index"
+                 class="card-text">{{cuisinname.cuisines.name}}</p>
+              </div>
+              <div>
+                <small class="text-muted">      
+                  <p class="card-text back-g">
+                    <i class="fas fa-cart-plus">
+                    </i>{{offer.description}}</p>
+                </small>
+              </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+  
+
+
+  <!-- <mat-tab-group>
+    <mat-tab label="First"> Content 1 </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group> -->
