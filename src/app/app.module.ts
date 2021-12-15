@@ -45,6 +45,9 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SalesReportsEffect } from './dashboards/dashboard1/store/sales-reports/sales-reports.effects';
 import { SalesReportsResolver } from './dashboards/dashboard1/services/sales-reports.resolver';
 import { AdminSettingComponent } from './main/admin-setting/admin-setting.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { NewOrdersComponent } from './main/new-orders/new-orders.component';
+const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
 
 
 
@@ -68,7 +71,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     BreadcrumbComponent,
     SidebarComponent,
-    AdminSettingComponent,
  
   ],
   imports: [
@@ -77,7 +79,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-
+    SocketIoModule.forRoot(config)
+,
     NgbModule.forRoot(),
     SlimLoadingBarModule.forRoot(),
     RouterModule.forRoot(Approutes, { useHash: false }),

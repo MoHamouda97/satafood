@@ -26,6 +26,7 @@ export class OrderReportFilterComponent implements OnInit {
   constructor(private service: OrdersService) { }
 
   ngOnInit() {
+    
   }
 
   async filter(filter, val, type = '') {    

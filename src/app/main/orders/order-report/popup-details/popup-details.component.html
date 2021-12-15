@@ -5,6 +5,41 @@
     nzWidth="60%"
     [nzStyle]="{ top: '20px' }"
     nzClassName="lang-ar">
+    <div class="row">
+        <div class="col-md-4">
+            <strong>الاسم الاول :</strong>
+            {{BillingData.first_name}}
+        </div>
+        <div class="col-md-4">
+            <strong>الاسم الاخير :</strong>
+            {{BillingData.last_name}}
+        </div>
+        <div class="col-md-4">
+            <strong>رقم الهاتف :</strong>
+            {{BillingData.phone}}
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+        <div class="col-md-6">
+            <strong>العنوان :</strong>
+            {{BillingData.address}}
+        </div>
+        <div class="col-md-6">
+            <strong>الملاحظات :</strong>
+            {{BillingData.notes}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <agm-map  [latitude]="data.latitude" [longitude]="data.longitude" [zoom]="zoom">
+                        <agm-marker [latitude]="data.latitude" [longitude]="data.longitude"></agm-marker>
+                    </agm-map> 
+                </div>
+            </div>        
+        </div>
+    </div>
     <div class="table-responsive">
         <nz-table 
             #headerTable  
@@ -24,9 +59,12 @@
             <tbody>
                 <tr *ngFor="let allData of headerTable.data; let i = index" >
                     <ng-container *ngFor="let d of allData | render">
-                        <td *ngIf="d != 'modified'">{{allData[d]}}</td>
+                        <td *ngIf="d != 'modified' && d != 'options'">{{allData[d]}}</td>
                         <td *ngIf="d == 'modified'">{{allData[d] | date:'medium'}}</td>
                     </ng-container>
+                    <td >
+<p *ngFor="let option of allData['options']"> {{option.menu_options.name}}</p>
+                    </td>
                 </tr>
             </tbody>
         </nz-table>

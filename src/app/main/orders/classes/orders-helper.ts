@@ -8,25 +8,19 @@ export class OrdersHelper {
       data.forEach(val => {
         let obj = {
           id: val["id"],  
-          user: (Boolean(val["user"])) ? val["user"]["username"] : '',
-          adress: (Boolean(val["billing_addres"])) ? val["billing_addres"]["address"] : val["user"]["address"],        
-          area: (Boolean(val["area"])) ? val["area"]["name"] : '',        
+          user: (Boolean(val["users"])) ? val["users"]["username"] : '',
+          adress: (Boolean(val["billing_address"])) ? val["billing_address"]["address"] : val["users"]["address"],        
 
           total: val["total"],
-          service: val["service"],
           taxes: val["taxes"],  
           discount: val["discount"],        
-          platform: (Boolean(val["platform"])) ? val["platform"]["name"] : '',
-          marketer: (Boolean(val["marketer"])) ? val["marketer"]["name"] : '',
           paymenttype: (Boolean(val["paymenttype"])) ? val["paymenttype"]["name"] : '',
-          driver: val,
 
-          order_status: val["order_status"],
+          order_status:(Boolean(val["order_status"])) ? val["order_status"]["name"] : '' ,
 
-          original: val,
           modified: val["modified"],
-          orderdetails: val["orderdetails"],
-          billing_addres: val["billing_addres"],
+          orderdetails: val["order_details"],
+          billing_addres: val["billing_address"],
         }
   
         orders = [...orders, obj];
@@ -39,10 +33,11 @@ export class OrdersHelper {
     const details = orders.map(val => {
       return {
         id: val["id"],
-        item: val["item"]["name"],
-        itemamount: val["itemamount"],
-        itemtotal: val["itemtotal"],
-        modified: val["modified"],
+        item: val["menu_categories_items"]["name"],
+        options:val["order_details_options"],
+        itemamount: val["amount"],
+        itemtotal: val["total"],
+        modified: val["created"],
       }
     });
 

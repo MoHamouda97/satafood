@@ -34,11 +34,11 @@ export class SalesReportsEffect {
                 ofType(ActionTypes.loadSalesReports),
                
                 mergeMap(action  => {
-                    
-                      return this.service.orderReport(action.BranchId) ;
+                    var data = action as any
+                      return this.service.orderReport(data.BranchId) ;
                      
                 }),
-                map(rep => {
+                map(rep => { 
                     let SalesReports: Reports[] = [{id: 1, ...rep}]
                     return   new  SalesReportsLoaded(SalesReports,false)
                                                         

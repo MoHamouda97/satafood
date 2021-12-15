@@ -69,7 +69,7 @@ nzPlaceHolder="اسم الفرع"
         <app-stats-info
             [infoClass]="'btn-warning'"
             [infoIcon]="'fas fa-money-bill-alt'"
-            [infoTxt]="p['paymenttype']['name']"
+            *ngIf="p['paymenttype']['name'] != null " 
             [infoTotal]="p['Ordertotals']"
         ></app-stats-info>
     </div>

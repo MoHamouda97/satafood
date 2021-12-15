@@ -1,3 +1,4 @@
+import { AgmCoreModule, GoogleMapsAPIWrapper } from "@agm/core";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -23,6 +24,7 @@ import { PipesModule } from "./pipes.module";
         NzIconModule,
         NzSwitchModule,
         NzTimePickerModule,
+        AgmCoreModule.forRoot({ apiKey: 'AIzaSyCjzzd4nbOiZJx3B53u9ZZAq0tcOsVUBdg' }),
 
     ],
     exports: [
@@ -42,7 +44,7 @@ PopupDetailsComponent,
         PipesModule,          
     ],
     providers: [
-        
+        GoogleMapsAPIWrapper
     ]
 })
 

@@ -14,7 +14,6 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     CommonModule,
     AreasRoutingModule,
     SharedModule,
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyCjzzd4nbOiZJx3B53u9ZZAq0tcOsVUBdg' })
-  ],providers:[GoogleMapsAPIWrapper]
+  ],providers:[]
 })
 export class AreasModule { }

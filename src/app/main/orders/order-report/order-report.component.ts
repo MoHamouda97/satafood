@@ -19,16 +19,16 @@ export class OrderReportComponent implements OnInit {
   constructor(private router: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.router)
     this.router.data.subscribe(
       res => {
-        this.orders = res.orders.data;
-        this.pages = res.orders.pagination;
-        this.marketers = Object.entries(res.orders.marketers)
-        this.paymenttypes = Object.entries(res.orders.paymenttypes)
-        this.platforms = Object.entries(res.orders.platforms)
-        this.tables = Object.entries(res.orders.tables)
-        this.users = Object.entries(res.orders.users)
+
+        this.orders = res.orders;
+        //this.pages = res.orders.pagination;
+        // this.marketers = Object.entries(res.orders.marketers)
+        // this.paymenttypes = Object.entries(res.orders.paymenttypes)
+        // this.platforms = Object.entries(res.orders.platforms)
+        // this.tables = Object.entries(res.orders.tables)
+        // this.users = Object.entries(res.orders.users)
       }
     )
   }

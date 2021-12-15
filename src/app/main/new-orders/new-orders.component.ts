@@ -1,13 +1,16 @@
-import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { NewOrdersService } from 'src/services/new-orders/new-orders.service';
 import { OrdersService } from 'src/services/orders/orders.service';
-import { OrdersHelper } from '../../classes/orders-helper';
+import { OrdersHelper } from '../orders/classes/orders-helper';
+import { NewOrdersModule } from './new-orders.module';
 
 @Component({
-  selector: 'app-order-report-tbl',
-  templateUrl: './order-report-tbl.component.html',
-  styleUrls: ['./order-report-tbl.component.css']
+  selector: 'app-new-orders',
+  templateUrl: './new-orders.component.html',
+  styleUrls: ['./new-orders.component.css']
 })
-export class OrderReportTblComponent implements OnInit, OnChanges {
+export class NewOrdersComponent implements OnInit {
+
   @Input('data') data: any[] = [];
   @Input('pages') pages: any = {};
   @Input('loading') loading: boolean = false;
@@ -25,6 +28,9 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
 
     'حالة الطلب',
     'التاريخ',
+    'عنوان العميل',
+    'تفاصيل الطلب',
+
   ];
 
   details: any = [];
@@ -34,21 +40,21 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
   popupHeader: any[] = [
     '#',
     'الطبق',
-    'الخيارات',
     'الكمية',
     'السعر',
     'التاريخ',
+    'الخيارات'
   ];  
 
   billingData: any = {};
   isBillingVisible: boolean = false;
 
-  constructor(private helper: OrdersHelper, private service: OrdersService) {  }
+  constructor(private helper: OrdersHelper, private service: NewOrdersService) {  }
 
-  ngOnInit() {
-    console.log(
-      this.data
-    )
+  async ngOnInit() {
+    const data: any = await this.service.getOrdersByFilter(1).toPromise();
+    this.data = this.helper.shapeOrderObject(data)
+    this.loading = false;
     if (localStorage.getItem("groupid") == "1"){
 
     this.header.splice(11, 1);
@@ -57,8 +63,12 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
   }
 
 
-  getOrderDetails(details: any[]) {    
+  getOrderDetails(details: any[],adress) {    
+    
     (details.length == 0) ? this.details = [] : this.details = this.helper.createDetails(details);
+    console.log(adress)
+    this.billingData = adress;
+
     this.isVisible = true;
   }  
 
@@ -67,9 +77,9 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     formData.append(localStorage.getItem('lastFilter'), localStorage.getItem('lastFilterValue'));
 
     this.loading = true;
-    const data: any = await this.service.getOrdersByFilter(formData).toPromise();
-    this.data = this.helper.shapeOrderObject(data.data)
-    this.loading = false;
+     const data: any = await this.service.getOrdersByFilter(formData).toPromise();
+     this.data = this.helper.shapeOrderObject(data.data)
+     this.loading = false;
   } 
   
   async changeState(index,values, event) {
@@ -82,13 +92,13 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
 
     this.loading = true;
 
-    const data: any = await this.service.changeOrderStatus(formData, values.id);
+     const data: any = await this.service.changeOrderStatus(formData, values.id);
         
-     if (data.success) {
-       const change = this.data.filter(d => d.id != values.id);
-       this.data = this.helper.shapeOrderObject(change);
-     }
-     this.loading = false;
+      if (data.success) {
+        const change = this.data.filter(d => d.id != values.id);
+        this.data = this.helper.shapeOrderObject(change);
+      }
+      this.loading = false;
   }
 
   showAdress(adress, event) {
@@ -116,5 +126,6 @@ export class OrderReportTblComponent implements OnInit, OnChanges {
     }
 
   }   
+
 
 }

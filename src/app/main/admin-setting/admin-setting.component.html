@@ -1,1 +1,83 @@
-<p>admin-setting works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="table-responsive">
+                <nz-table 
+                    [nzFrontPagination]="false"
+                    [nzData]="data" 
+                    [nzLoading]="loading"
+                    [nzPageSize]="20"
+                    [nzPageIndex]="1"
+                    [nzScroll]="{ x: '240px' }"
+                    (nzPageIndexChange)="onPageChange($event)"
+                    class="table forms-table table-striped table-bordered"
+                    *ngIf="data.length >= 1">
+                    <thead>
+                      <tr class="bg-light"> 
+                        <th *ngFor="let head of header; let i = index">
+                            {{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr 
+                          *ngFor="let allData of data; let i = index" 
+                            style="cursor: pointer; "
+                           >
+                            <ng-container *ngFor="let d of allData | render">
+                                <td>{{allData[d]}}</td>
+
+                               
+                            </ng-container> 
+                            <td (click)="editLocation(i)" >تعديل</td>
+                           
+                        </tr>
+                    </tbody>
+                </nz-table>
+                <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
+            </div>
+        </div>
+    </div>
+</div>
+
+<nz-modal [(nzVisible)]="isLocationVisible" [nzTitle]="'تحديث '" (nzOnCancel)="handleCancel()">
+    <input  
+        type="text" 
+        style="width: 100%; margin-bottom: 15px; direction: rtl;" 
+        nz-input
+        [(ngModel)]="BranchObj.name"
+
+        nzSize="large"
+        ng
+        id="address"
+        placeholder="اسم الاعداد"
+       >
+        <input  
+        type="text" 
+        style="width: 100%; margin-bottom: 15px; direction: rtl;" 
+        nz-input
+        [(ngModel)]="BranchObj.value"
+
+        nzSize="large"
+        id="address"
+        placeholder="القيمة"
+       >
+        
+    <div class="row">
+   
+        <div class="col-12">
+            <button
+                class="form-control w-100"
+                style="margin-top: 15px;" 
+                nz-button 
+                matRipple
+                (click)="editClickable()">
+                <div class="loader text-center w-100" *ngIf="updateLoader">
+                </div>                        
+                <span *ngIf="!updateLoader">
+                    تحديث 
+                </span>    
+            </button>
+        </div>        
+    </div>
+</nz-modal>

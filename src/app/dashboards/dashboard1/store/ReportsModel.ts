@@ -15,7 +15,12 @@ export interface Confirgration {
     value?:   number;
     created?: Date;
 }
-
+export class Confirgrations {
+    id?:      number;
+    name?:    string;
+    value?:   number;
+    created?: Date;
+}
 export interface OrderByPayment {
     Ordertotals?: number;
     paymenttype?: Paymenttype;

@@ -1,13 +1,11 @@
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { shareReplay } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrdersService {
+export class NewOrdersService {
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +20,7 @@ export class OrdersService {
     return this.http.post(`${environment.endpoint}/orders.json?page=1`, formData).toPromise();
   }
   getOrdersByFilter( page){
-    return this.http.get(`${environment.endpoint}/orders/orders/${localStorage.getItem("RestaurantId")}`)
+    return this.http.get(`${environment.endpoint}/orders/currentorders/${localStorage.getItem("RestaurantId")}/1`)
   
   
   }

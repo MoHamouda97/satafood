@@ -35,7 +35,17 @@
                      
                                
                                 <td  (click)="getOrderDetails(allData['orderdetails'], $event)" *ngIf="d == 'modified'">{{allData[d] | date:'medium'}}</td>
-                            </ng-container>                            
+                            </ng-container>  
+                            <td>
+                                <button (click)="showAdress(allData['billing_addres'], $event)" class="btn btn-rounded btn-block btn-info">
+                                    تفاصيل العنوان 
+                                </button>    
+                            </td>    
+                            <td>
+                                <button (click)="getOrderDetails(allData['orderdetails'],allData['billing_addres'])" class="btn btn-rounded btn-block btn-info">
+                                    تفاصيل الطلب 
+                                </button>    
+                            </td>                        
                         </tr>
                     </tbody>
                 </nz-table>
@@ -45,7 +55,15 @@
     </div>
 </div>
 
+<app-popup-details
+    [data]="details"
+    [BillingData]="billingData"
 
+    [title]="'الطلبات'"
+    [header]="popupHeader"
+    [isVisible]="isVisible"
+    (closeDV)="isVisible = $event"
+></app-popup-details>
 
 <app-adress-popup
     [data]="billingData"

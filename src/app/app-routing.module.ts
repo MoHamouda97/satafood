@@ -21,7 +21,14 @@ export const Approutes: Routes = [
 
         loadChildren: () => import('./dashboards/dashboard.module').then(m => m.DashboardModule),
 
-      },
+      }
+      ,
+      
+      {
+        path: 'new-orders',
+        loadChildren: () => import('./main/new-orders/new-orders.module').then(m => m.NewOrdersModule)
+      }
+      ,
       
       {
         path: 'orders',
@@ -31,6 +38,10 @@ export const Approutes: Routes = [
       {
         path: 'cuisines',
         loadChildren: () => import('./main/cuisines/cuisines.module').then(m => m.CuisinesModule)
+      }    ,
+      {
+        path: 'admin-setting',
+        loadChildren: () => import('./main/admin-setting/admin-setting.module').then(m => m.AdminSettingModule)
       }
       ,
       

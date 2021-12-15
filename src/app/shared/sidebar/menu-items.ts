@@ -100,30 +100,6 @@ export const ROUTES: RouteInfo[] = [
     ]
   },{
     path: '',
-    title: 'الفروع  ',
-    icon: 'fas fa-globe',
-    class: 'has-arrow',
-    extralink: false,
-    submenu: [
-      {
-        path: '/branches/all',
-        title: 'عرض',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/branches/add',
-        title: 'اضافة',
-        icon: '',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-    ]
-  },{
-    path: '',
     title: 'المطاعم',
     icon: 'fas fa-globe',
     class: 'has-arrow',
@@ -140,6 +116,22 @@ export const ROUTES: RouteInfo[] = [
       {
         path: '/restaurants/add',
         title: 'اضافة',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
+  },{
+    path: '',
+    title: 'الاعدادت العامة',
+    icon: 'fas fa-globe',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/admin-setting/all',
+        title: 'عرض',
         icon: '',
         class: '',
         extralink: false,
@@ -175,6 +167,40 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
       {
         path: '/dashboard/dashboard1',
+        title: 'عرض',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      }
+    ]
+  },
+  {
+    path: '',
+    title: 'الطلبات',
+    icon: 'fas fa-globe',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/orders/reports',
+        title: 'عرض',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      }
+    ]
+  },
+  {
+    path: '',
+    title: ' الطلبات الجديدة',
+    icon: 'fas fa-globe',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/new-orders',
         title: 'عرض',
         icon: '',
         class: '',

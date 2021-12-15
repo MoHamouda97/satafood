@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 })
 export class PopupDetailsComponent implements OnInit, OnChanges {
   @Input('data') data: any;
+  @Input('BillingData') BillingData: any = {};
+
   @Input('title') title: string;
   @Input('header') header: any[] = [];
   @Input('isVisible') isVisible: boolean = false;
